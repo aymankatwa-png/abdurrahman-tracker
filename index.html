@@ -3,23 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#EFE6D2">
-<title>على خطى ابن الهيثم — عبد الرحمن · وحدة التصوير · المركز الإعلامي — ممكن</title>
-<meta name="description" content="أنا أحدّث أنا: مسار عبد الرحمن في التصوير الإنساني ولغة الزاوية والمقال المصوّر  — وحدة التصوير، المركز الإعلامي في منظمة ممكن. من 8 نوفمبر إلى 31 ديسمبر 2026.">
+<meta name="theme-color" content="#F3EBD8">
+<title>ديوان عبد الرحمن · وحدة التصوير · المركز الإعلامي — ممكن</title>
+<meta name="description" content="ديوان عبد الرحمن: مسار في التصوير الإنساني ولغة الزاوية والمقال المصوّر  — وحدة التصوير، المركز الإعلامي في منظمة ممكن. من 8 نوفمبر إلى 31 ديسمبر 2026.">
 <link rel="icon" href="assets/favicon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="base.css?v=5">
-<link rel="stylesheet" href="app.css?v=5">
+<link rel="preload" href="assets/fonts/aref-ruqaa-arabic-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="base.css?v=6">
+<link rel="stylesheet" href="app.css?v=6">
 </head>
 <body>
 
-<!-- ============ who is in the darkroom ============ -->
+<!-- ============ who opens the diwan ============ -->
 <div class="veil hidden" id="rolePicker">
   <div class="veil-card">
     <img class="veil-st" src="assets/portrait-sm.webp" alt="" width="130" height="130">
-    <h2>من على طاولة المحرّر؟</h2>
+    <h2>من يفتح الديوان؟</h2>
     <p>الإجابة تُحفَظ على هذا الجهاز فقط — ويمكن تغييرها في أي وقت.</p>
     <div class="pick-row">
       <button class="btn btn-main" data-role="me">أنا عبد الرحمن</button>
@@ -55,68 +53,93 @@
   </div>
 </div>
 
-<!-- ============ hero: Ibn al-Haytham's dark house ============ -->
-<header class="table" id="hero">
-  <div class="wrap tbl-top">
+<!-- ============ hero: his own diwan ============ -->
+<header class="diwan" id="hero">
+  <div class="wrap dw-top">
     <img class="logo" src="assets/logo-cyan.png" alt="ممكن — منظمة ممكن للتوعية والإعلام" width="132" height="44">
     <div class="unit-tag en">Media Center · <b>Photography Unit</b></div>
   </div>
-  <div class="wrap tbl-grid">
-    <div class="tbl-copy">
-      <div class="tape tape-label">على خُطى ابن الهيثم · بكرة 01 · نوفمبر — ديسمبر 2026</div>
-      <h1 class="hero-title">عبد الرحمن</h1>
-      <div class="hero-sub">كل كاميرا في يدك بدأت من بيتٍ مظلم… وثقبٍ صغير.</div>
-      <p class="hero-lead">قبل نحو ألف عام، كتب العالِم المسلم <b>الحسن بن الهيثم</b> في «كتاب المناظر» أن الضوء إذا دخل من ثقبٍ صغير إلى بيتٍ مظلم، رسم على الجدار المقابل صورةً مقلوبة لما في الخارج. على هذا المبدأ تقوم كل كاميرا حتى اليوم — ومنها كاميرتك.</p>
-      <p class="hero-lead">أنت تكمل طريقًا بدأه عالِمٌ من أمّتك: أن ترى بصدق، وأن تنقل ما رأيت كما هو. لا أحد هنا يقارنك بأحد، ولا أحد يرسم لك خطواتك.</p>
-      <div class="hero-cta">
-        <a class="btn btn-main" href="#roll">بكرة الأسابيع</a>
-        <a class="btn btn-ghost" href="#shots">أهدافي الثمانية</a>
+  <div class="wrap">
+    <div class="book" id="book">
+      <div class="page page-r" id="pageR">
+        <div class="pg-in">
+          <div class="pg-k">الديوان الأول · من <bdi dir="ltr">8</bdi> نوفمبر إلى <bdi dir="ltr">31</bdi> ديسمبر <bdi dir="ltr">2026</bdi></div>
+          <h1 class="name-h">
+            <span class="sr">ديوان عبد الرحمن</span>
+            <svg class="name-ink" id="nameInk" viewBox="0 0 640 230" aria-hidden="true">
+              <text class="nm-pre" x="320" y="58" text-anchor="middle">ديوان</text>
+              <text class="nm" id="nmText" x="320" y="190" text-anchor="middle">عبد الرحمن</text>
+              <circle class="drop" cx="96" cy="196" r="5"/><circle class="drop d2" cx="80" cy="206" r="2.6"/>
+            </svg>
+          </h1>
+          <svg class="orn orn-hero" viewBox="0 0 300 30" aria-hidden="true"><path d="M10 15 H120 M180 15 H290" stroke="currentColor" stroke-width="1.2"/><g transform="translate(150 15)"><rect x="-9" y="-9" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.4"/><rect x="-9" y="-9" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.4" transform="rotate(45)"/><circle r="3" fill="currentColor"/></g><circle cx="126" cy="15" r="2" fill="currentColor"/><circle cx="174" cy="15" r="2" fill="currentColor"/></svg>
+          <p class="pg-sub">ديوانٌ يُكتَب بالضوء… بيتًا كلَّ أسبوع</p>
+          <p class="pg-lead">في تراثنا، يجمع الشاعر قصائده في «ديوان» يحمل اسمه. وكلمة «فوتوغرافيا» نفسها معناها: <b>الكتابة بالضوء</b>. هذا ديوانك أنت: ثمانية أسابيع، وفي كل أسبوع تكتب بيدك بيتًا واحدًا — عمّا رأيت، أو تعلّمت، أو خفت منه ثم تجاوزته — وإلى جانبه صورك.</p>
+          <p class="pg-lead">في <bdi dir="ltr">31</bdi> ديسمبر يكتمل ديوانك الأول: ثمانية أبيات بقلمك، ومقالٌ مصوّر بعدستك. لا أحد يكتبه عنك، ولا أحد يقارنك بأحد.</p>
+          <div class="hero-cta">
+            <a class="btn btn-main" href="#diwan">قصيدة الأسابيع</a>
+            <a class="btn btn-ghost" href="#goals">أبواب الديوان</a>
+          </div>
+        </div>
+        <span class="folio">1</span>
       </div>
+      <div class="page page-l">
+        <div class="pg-in">
+          <figure class="plate" id="plate">
+            <div class="plate-ph"><img src="assets/portrait.webp" alt="عبد الرحمن — مصوّر وحدة التصوير" width="720" height="900"></div>
+            <figcaption>صاحب الديوان · <span>عبد الرحمن، مصوّر وحدة التصوير</span></figcaption>
+          </figure>
+          <div class="latest" id="latest"></div>
+        </div>
+        <span class="folio">2</span>
+      </div>
+      <div class="cover" id="cover" aria-hidden="true">
+        <div class="cv-front">
+          <div class="cv-frame">
+            <svg class="cv-star" viewBox="-50 -50 100 100"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="-30" y="-30" width="60" height="60"/><rect x="-30" y="-30" width="60" height="60" transform="rotate(45)"/><circle r="15"/></g><circle r="5" fill="currentColor"/></svg>
+            <div class="cv-t">ديوان</div>
+            <div class="cv-n">عبد الرحمن</div>
+            <div class="cv-y">الديوان الأول · <bdi dir="ltr">2026</bdi></div>
+          </div>
+        </div>
+        <div class="cv-back"></div>
+      </div>
+      <div class="spine" aria-hidden="true"></div>
     </div>
-
-    <figure class="hero-portrait" id="heroPortrait">
-      <svg class="optics" viewBox="0 0 600 640" aria-hidden="true">
-        <defs><radialGradient id="pinG"><stop offset="0" stop-color="#fff3c4"/><stop offset=".4" stop-color="#f5d27a" stop-opacity=".7"/><stop offset="1" stop-color="#f5d27a" stop-opacity="0"/></radialGradient></defs>
-        <g class="rings" fill="none" stroke="#B8892E" stroke-opacity=".35">
-          <circle cx="96" cy="300" r="70"/><circle cx="96" cy="300" r="140" stroke-dasharray="3 7"/><circle cx="96" cy="300" r="230"/><circle cx="96" cy="300" r="330" stroke-dasharray="2 9"/>
-        </g>
-        <g id="optRays" fill="none" stroke="#B8892E" stroke-width="1.4"></g>
-        <g id="optDots" fill="#fff3c4"></g>
-        <circle cx="96" cy="300" r="34" fill="url(#pinG)" class="hole"/>
-        <g class="abjad" font-family="Amiri, serif" font-size="28" fill="#9b2c22" font-weight="700">
-          <text x="570" y="70">ا</text><text x="570" y="590">ب</text><text x="104" y="282">ج</text><text x="14" y="560">د</text><text x="14" y="96">هـ</text>
-        </g>
-      </svg>
-      <img class="portrait" src="assets/portrait.webp" alt="عبد الرحمن — مصوّر وحدة التصوير" width="696" height="808">
-      <figcaption>الضوء يدخل من الثقب <b>ج</b> فترتسم الصورة مقلوبة — مبدأ «البيت المظلم» الذي وصفه ابن الهيثم، وتعمل به الكاميرا في يدك.</figcaption>
-    </figure>
   </div>
-  <div class="blink" id="blink" aria-hidden="true"></div>
 </header>
 
 <main>
-<!-- ============ his 8 goals: darkroom test strips ============ -->
-<section class="sec" id="shots">
+<!-- ============ the poem of the weeks ============ -->
+<section class="sec sec-poem" id="diwan">
   <div class="wrap">
-    <div class="sec-head rv"><div><div class="sec-k">Test strips · شرائط الاختبار</div><h2>أهدافي الثمانية</h2><p class="sec-sub">في الغرفة المظلمة، قبل الطبعة النهائية، يطبع المصوّر «شريط اختبار» بأزمنة تعريض مختلفة: 2 ثانية، 4، 8… حتى يصل إلى التعريض الصحيح. أهدافك الثمانية — التي كتبتَها بنفسك — شرائط اختبار، تُعرَّض درجةً بعد درجة كلما اقتربت.</p></div></div>
-    <div class="strips" id="strips"></div>
+    <div class="sec-head rv"><div><div class="sec-k">قصيدة الأسابيع</div><h2>ثمانية أسابيع… ثمانية أبيات</h2><p class="sec-sub">كل أسبوع بيتٌ في قصيدتك. أسبوعٌ أنهيتَ مهامه في وقته يُختم بالحبر الأحمر: «تمّ». أسبوع امتحانات حقّقت فيه ساعات دراستك يُختم بالأزرق: «محفوظ». أما أسبوعٌ مضى ومهامه ناقصة فيُشطب بيته بخطّ أحمر — والحبر لا يُمحى.</p></div></div>
+    <figure class="epi rv">
+      <blockquote>نٓ وَالْقَلَمِ وَمَا يَسْطُرُونَ</blockquote>
+      <figcaption>سورة القلم، الآية <bdi dir="ltr">1</bdi></figcaption>
+      <p class="why"><b>لماذا في أول الديوان؟</b> أقسم الله بالقلم وبما يُكتب به — فالكلمة أمانة. وأنت تكتب هنا بقلمين: قلم الحبر في أبيات هذا الديوان، وقلم الضوء في صورك. وكلاهما شهادة: لا تكتب إلا ما شعرت به، ولا تنشر صورة إلا كما كانت.</p>
+    </figure>
+    <div class="poem rv" id="poem"></div>
+    <div class="verse-form hidden" id="vForm"></div>
+    <div class="poem-foot">
+      <div class="poem-stats rv" id="poemStats"></div>
+      <div class="pledge rv" id="pledge"></div>
+    </div>
   </div>
 </section>
 
-<!-- ============ the roll of weeks ============ -->
-<section class="sec sec-roll" id="roll">
+<!-- ============ the eight chapters: his goals ============ -->
+<section class="sec" id="goals">
   <div class="wrap">
-    <div class="sec-head rv"><div><div class="sec-k">The roll · البكرة</div><h2>ثمانية أسابيع = ثمانية إطارات</h2><p class="sec-sub">المحرّر يمرّ على البكرة بقلم الشمع الأحمر. أسبوعٌ أنهيتَ مهامه في وقته: دائرة حمراء — «مُختار». أسبوع امتحانات حقّقت فيه ساعات دراستك: دائرة زرقاء. أسبوعٌ مضى ومهامه ناقصة: ✗ بالأحمر — وقلم الشمع لا يُمسح.</p></div></div>
-    <div class="roll rv" id="rollStrip"></div>
-    <div class="sheet-stats rv" id="rollStats"></div>
-    <div class="pledge rv" id="pledge"></div>
+    <div class="sec-head rv"><div><div class="sec-k">أبواب الديوان</div><h2>أهدافي الثمانية</h2><p class="sec-sub">تُقسَّم الدواوين القديمة إلى «أبواب»، كما في «ديوان الحماسة» لأبي تمّام. أبواب ديوانك هي الأهداف الثمانية التي كتبتَها بنفسك — وكلما اقتربتَ من هدف، امتدّ خطّ الحبر تحته.</p></div></div>
+    <div class="babs" id="babs"></div>
   </div>
 </section>
 
 <!-- ============ this week ============ -->
 <section class="sec" id="week">
   <div class="wrap">
-    <div class="sec-head rv"><div><div class="sec-k">This week</div><h2>إطار هذا الأسبوع</h2></div></div>
+    <div class="sec-head rv"><div><div class="sec-k">صفحة هذا الأسبوع</div><h2>ما يُكتب هذا الأسبوع</h2></div></div>
     <div class="card rv" id="weekCard"></div>
   </div>
 </section>
@@ -124,7 +147,7 @@
 <!-- ============ studies ============ -->
 <section class="sec" id="studiesSec">
   <div class="wrap">
-    <div class="sec-head rv"><div><div class="sec-k">Studies first</div><h2>دراستي أولًا</h2><p class="sec-sub">«التركيز على الدراسة» هدفٌ كتبتَه أنت. لذلك هي في قلب المسار: ربع تقدّمك الكامل، وأسبوع الامتحان يُحفظ إطاره بدائرة زرقاء إذا حقّقت ساعاتك.</p></div></div>
+    <div class="sec-head rv"><div><div class="sec-k">الدراسة أولًا</div><h2>دراستي أولًا</h2><p class="sec-sub">«التركيز على الدراسة» هدفٌ كتبتَه أنت. لذلك هي في قلب المسار: ربع تقدّمك الكامل، ووأسبوع الامتحان يُختم بيته بالأزرق «محفوظ» إذا حقّقت ساعاتك.</p></div></div>
     <figure class="note note-wide rv">
       <blockquote>بقدرِ الكدِّ تُكتسبُ المعالي … ومن طلبَ العُلا سهرَ الليالي</blockquote>
       <figcaption>— يُنسب إلى الإمام الشافعي</figcaption>
@@ -147,65 +170,16 @@
 <!-- ============ the four rolls ============ -->
 <section class="sec" id="rolls">
   <div class="wrap">
-    <div class="sec-head rv"><div><div class="sec-k">Four rolls</div><h2>البكرات الأربع</h2><p class="sec-sub">كل بكرة أسبوعان. تنهي المهمة فتصبح «على طاولة المحرّر» حتى يعتمدها المشرف. الترتيب داخل الأسبوع لك.</p></div></div>
+    <div class="sec-head rv"><div><div class="sec-k">فصول الديوان</div><h2>الفصول الأربعة</h2><p class="sec-sub">كل فصل أسبوعان. تنهي المهمة فتصبح «بانتظار المراجعة» حتى يعتمدها المشرف. الترتيب داخل الأسبوع لك.</p></div></div>
     <div id="chapters"></div>
   </div>
 </section>
 
-<!-- ============ the backs of the prints ============ -->
-<section class="sec" id="talk">
-  <div class="wrap">
-    <div class="sec-head rv"><div><div class="sec-k">On the back of the print</div><h2>أنا أحدّثُ أنا</h2><p class="sec-sub">هذا عنوانٌ اخترتَه أنت. الناس يكتبون خلف صورهم ما لا تقوله الصورة — اكتب كل أسبوع سطرين خلف طبعته لعبد الرحمن في ديسمبر. اضغط على الطبعة لتقلبها. لا يقرأ هذه الرسائل غيرك.</p></div></div>
-    <figure class="note note-wide rv">
-      <blockquote>… ويتّهم أيضًا نفسه عند خصامه، فلا يتحامل عليه ولا يتسامح فيه</blockquote>
-      <figcaption>— الحسن بن الهيثم، من تتمّة النصّ نفسه</figcaption>
-      <p class="why"><b>لماذا هنا؟</b> ابن الهيثم لم يكتفِ بمراجعة غيره — راجع نفسه أيضًا، بلا قسوة وبلا تساهل. وهذا بالضبط ما بدأتَه حين كتبتَ «أنا أحدّث أنا».</p>
-    </figure>
-    <div class="talk rv" id="talkCard"></div>
-  </div>
-</section>
-
-<!-- ============ AI ============ -->
-<section class="sec" id="ai">
-  <div class="wrap">
-    <div class="sec-head rv"><div><div class="sec-k">The machine and the shutter</div><h2>الآلة لا تعرف لماذا ضغطتَ الزر</h2><p class="sec-sub">الذكاء الاصطناعي يصنع صورًا جميلة بلا ذاكرة وبلا شاهد. قيمتك أنك كنتَ هناك، وأنك صادقٌ فيما تنقله. هذه قواعدنا في المركز الإعلامي.</p></div></div>
-    <figure class="note note-wide rv">
-      <blockquote>الواجب على الناظر في كتب العلوم، إذا كان غرضه معرفة الحقائق، أن يجعل نفسه خصمًا لكل ما ينظر فيه</blockquote>
-      <figcaption>— الحسن بن الهيثم، «الشكوك على بطليموس»</figcaption>
-      <p class="why"><b>لماذا هنا؟</b> هذا منهج ابن الهيثم مع أعظم علماء عصره: لا يقبل شيئًا قبل أن يختبره. وهو منهجك مع كل ما يكتبه أو يصنعه الذكاء الاصطناعي — كن «خصمًا» له حتى تتحقّق.</p>
-    </figure>
-    <div class="ai-grid">
-      <ol class="ai-rules rv">
-        <li><span><b>لا تُضِف ولا تحذف</b> شيئًا من صورة وثائقية. ما حدث أمام الكاميرا هو ما يُنشر.</span></li>
-        <li><span>تنظيف التشويش والأقنعة الذكية <b>مسموح</b> ما دام لا يغيّر المعلومة.</span></li>
-        <li><span><b>لا تكبير بالذكاء الاصطناعي</b> (AI upscaling) لصورة وثائقية أو صورة مسابقة.</span></li>
-        <li><span><b>لا تولّد بشرًا أو أحداثًا</b> واقعية المظهر ثم تقدّمها كأنها حقيقية.</span></li>
-        <li><span>أي صورة مولَّدة يُكتب عليها بوضوح: <b>«مولَّدة بالذكاء الاصطناعي»</b>.</span></li>
-        <li><span>ما يكتبه الذكاء الاصطناعي <b>مسوّدة غير مُتحقَّق منها</b> — أنت تراجع كل معلومة واسم ورقم.</span></li>
-        <li><span>التعليق دقيق، وأي مشهد <b>مُعاد تمثيله</b> يُذكر ذلك صراحة.</span></li>
-        <li><span><b>لا استنساخ لصوت أحد</b> بلا موافقة مكتوبة، وأي صوت مولَّد يُعلَن.</span></li>
-        <li><span>الذكاء الاصطناعي <b>لا يحلّ محلّ إنسان حقيقي</b>، ولا محلّ موافقته على التصوير.</span></li>
-        <li><span>أرفق <b>Content Credentials</b> (سجلّ التعديل) بصورك من Lightroom أو Photoshop.</span></li>
-      </ol>
-      <div class="ai-yes rv">
-        <h4>أين يساعدك فعلًا؟</h4>
-        <ul>
-          <li>الفرز الأولي لمئات الصور — ثم تختار أنت بعينك.</li>
-          <li>تنظيف التشويش في صور الإضاءة المنخفضة.</li>
-          <li>مسوّدة إنجليزية لتعليقاتك — ثم تراجعها كلمة كلمة (وهذا تمرين إنجليزية أيضًا).</li>
-          <li>أفكار لنبذتك وصفحة أعمالك — ثم تكتبها بصوتك أنت.</li>
-          <li>تفريغ المقابلات نصيًّا — تأكّد أن الأداة تدعم العربية وراجع النص.</li>
-        </ul>
-        <p class="ai-src">المصادر: قواعد World Press Photo، ودليل Associated Press، ومبادرة Content Credentials.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ============ resources ============ -->
 <section class="sec" id="library">
   <div class="wrap">
-    <div class="sec-head rv"><div><div class="sec-k">The shelf</div><h2>رفّ المصادر</h2><p class="sec-sub">مصادر إضافية بعد المسار — اختر منها ما يشدّك.</p></div></div>
+    <div class="sec-head rv"><div><div class="sec-k">خزانة الكتب</div><h2>مصادر إضافية</h2><p class="sec-sub">مصادر إضافية بعد المسار — اختر منها ما يشدّك.</p></div></div>
     <div id="resources" class="rv"></div>
   </div>
 </section>
@@ -221,8 +195,8 @@
 <div id="toasts" aria-live="polite"></div>
 <canvas id="confetti" aria-hidden="true"></canvas>
 
-<script src="content.js?v=5"></script>
-<script src="theme.js?v=5"></script>
-<script src="engine.js?v=5"></script>
+<script src="content.js?v=6"></script>
+<script src="theme.js?v=6"></script>
+<script src="engine.js?v=6"></script>
 </body>
 </html>
