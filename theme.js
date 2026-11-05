@@ -18,7 +18,7 @@ function openBook() {
   var hero = $('#hero');
   var go = function () {
     hero.classList.add('open');
-    setTimeout(function () { hero.classList.add('ink'); }, reduce ? 0 : 1250);
+    setTimeout(function () { hero.classList.add('ink'); }, reduce ? 0 : 700);
     setTimeout(function () { hero.classList.add('done'); }, reduce ? 0 : 1600);
   };
   var fonts = document.fonts && document.fonts.load ? Promise.all([document.fonts.load('700 80px "Aref Ruqaa"'), document.fonts.load('400 20px "Amiri"')]) : Promise.resolve();

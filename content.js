@@ -33,9 +33,9 @@ window.TRACKER = {
       desc: 'هذا أول حديث في صحيح البخاري، وبه يبدأ كثير من العلماء كتبهم — لأن كل عمل يبدأ بسؤال «لماذا؟». والصورة كذلك. أنت تعرف الكاميرا جيدًا — هذا لم يعد السؤال. السؤال الآن: ماذا تريد أن يشعر به من يرى صورتك؟ في هذا الفصل تكتب ميثاقك بنفسك، وتختار ما ستخسره إن لم تفِ به، وتبدأ مع مصوّر يذكّرك بأن تصوّر ما تحبّه وتؤمن به.',
       tasks: [
         { id: 'a1', k: 'mission', w: 1, sub: 1, t: 'الميثاق: أكتب أهدافي بنفسي (أختار من أهدافي الثمانية ما يخدم هذين الشهرين) وما سأخسره إن لم أفِ — صدقة أحدّدها أنا — وأضيف موادّي ومواعيد امتحاناتي في قسم «الدراسة»' },
-        { id: 'a2', k: 'course', w: 1, lang: 'EN', t: 'Photograph What You Love — Sean Tucker (11 دقيقة)', url: 'https://www.youtube.com/watch?v=l8QzST3ipNU', why: 'صوّر ما تؤمن به، لا ما يُعجب الآخرين — وهذا ما يجعل الصورة صادقة.' },
+        { id: 'a2', k: 'course', w: 1, lang: 'EN', t: 'صوّر ما تحبّه، 11 دقيقة — Sean Tucker: Photograph What You Love', url: 'https://www.youtube.com/watch?v=l8QzST3ipNU', why: 'صوّر ما تؤمن به، لا ما يُعجب الآخرين — وهذا ما يجعل الصورة صادقة.' },
         { id: 'a3', k: 'read', w: 1, lang: 'AR', t: 'لماذا تعجز صور الذكاء الاصطناعي عن منافسة عدسة الحقيقة؟ — الجزيرة نت', url: 'https://www.aljazeera.net/media/2025/11/4/%d9%84%d9%85%d8%a7%d8%b0%d8%a7-%d9%84%d8%a7-%d9%8a%d9%85%d9%83%d9%86-%d8%a3%d9%86-%d8%aa%d8%ad%d9%84-%d8%b5%d9%88%d8%b1-%d8%a7%d9%84%d8%b0%d9%83%d8%a7%d8%a1' },
-        { id: 'a4', k: 'course', w: 2, lang: 'EN', t: 'How to become a better photographer through «visual exercise» — Sean Tucker (7 دقائق)', url: 'https://www.youtube.com/watch?v=gGngRlWHmZw', why: 'تمرين يومي بسيط يدرّب عينك — ويصنع صوتك الخاص مع الوقت. (وتمرين للإنجليزية أيضًا)' },
+        { id: 'a4', k: 'course', w: 2, lang: 'EN', t: 'تمرين يومي للعين، 7 دقائق — Sean Tucker: How to become a better photographer', url: 'https://www.youtube.com/watch?v=gGngRlWHmZw', why: 'تمرين يومي بسيط يدرّب عينك — ويصنع صوتك الخاص مع الوقت. (وتمرين للإنجليزية أيضًا)' },
         { id: 'a5', k: 'practice', w: 2, sub: 1, t: '«كلمة قبل الضغطة»: 20 صورة في مكان واحد — قبل كل صورة أكتب كلمة واحدة: الشعور الذي يجب أن تحمله. أختار أفضل 3' },
         { id: 'a6', k: 'write', w: 2, sub: 1, t: 'تعليق للصور الثلاث بالعربية والإنجليزية — جملة واحدة لكل صورة تقول ما لا تقوله الصورة' },
         { id: 'a7', k: 'review', w: 2, t: 'جلسة مع المشرف: هل وصلت الكلمة؟' }
@@ -48,7 +48,7 @@ window.TRACKER = {
         { id: 'b1', k: 'course', w: 3, lang: 'AR', t: 'وراء كل لاجئ قصة.. السرد الصحفي للقضايا الإنسانية — معهد الجزيرة للإعلام', url: AJ + 'course-69' },
         { id: 'b2', k: 'read', w: 3, lang: 'AR', t: 'أخلاقيات الصورة الصحفية في تغطية قضايا اللجوء — مجلة معهد الجزيرة', url: 'https://institute.aljazeera.net/en/node/1808', why: 'الموافقة، والقُصّر، ولا تمثيل، ولا تضخيم للمعاناة.' },
         { id: 'b3', k: 'read', w: 3, lang: 'AR', t: 'الإعلام الإنساني بين المعايير الأخلاقية والمحاذير القانونية — IJNet', url: 'https://ijnet.org/en/node/13246', why: 'طرق عملية لحماية الكرامة: التصوير من الخلف، والمشهد الواسع، والموافقة المكتوبة.' },
-        { id: 'b4', k: 'course', w: 3, lang: 'EN', t: 'Platon: Stories of Photographing Monumental People — TED (18 دقيقة)', url: 'https://www.youtube.com/watch?v=rE_SxmltgmA', why: 'مصوّر بورتريه يحكي كيف يكسب ثقة الإنسان أمامه في دقائق — جوهر فصل «الكرامة والثقة».' },
+        { id: 'b4', k: 'course', w: 3, lang: 'EN', t: 'محاضرة TED، 18 دقيقة — Platon: Stories of Photographing Monumental People', url: 'https://www.youtube.com/watch?v=rE_SxmltgmA', why: 'مصوّر بورتريه يحكي كيف يكسب ثقة الإنسان أمامه في دقائق — جوهر فصل «الكرامة والثقة».' },
         { id: 'b5', k: 'course', w: 4, lang: 'AR', t: '«صورة هزّت ضميره.. كيف غيّرت فلسطين حياة مصوّر ياباني؟» — الجزيرة الوثائقية', url: 'https://www.youtube.com/watch?v=sJU5XUIXn-w', why: 'وثائقي عربي ملهِم: كيف تتحوّل الصورة إلى شهادة، والمصوّر إلى شاهد أمين.' },
         { id: 'b6', k: 'practice', w: 4, sub: 1, t: '«خمسة وجوه»: 5 بورتريهات لأشخاص حقيقيين في أنشطة ممكن — بموافقتهم، شعور لا وقفة — مع جملة قصة لكل وجه' },
         { id: 'b7', k: 'review', w: 4, t: 'جلسة مع المشرف على البورتريهات' }
@@ -75,7 +75,7 @@ window.TRACKER = {
         { id: 'd1', k: 'read', w: 7, lang: 'AR', t: 'البرنامج العربي للتصوير الوثائقي — أدرس 3 مقالات مصوّرة (منها «زغلول الحمام» للينا خالد)', url: 'https://www.arabdocphotography.org/project/86', why: 'قصص مصوّرة عربية شخصية وعاطفية — ومنها أعمال لمصوّرين ليبيين.' },
         { id: 'd2', k: 'course', w: 7, lang: 'AR', t: 'صناعة الأفلام الوثائقية — معهد الجزيرة للإعلام', url: AJ + 'course-81' },
         { id: 'd3', k: 'review', w: 7, t: 'جلسة مع الفريق: الذكاء الاصطناعي في عملنا — نتناقش معًا فيما نستخدمه وما لا نستخدمه' },
-        { id: 'd9', k: 'course', w: 8, lang: 'EN', t: 'How to Build a Professional Photography Portfolio — Evan Ranft (15 دقيقة)', url: 'https://www.youtube.com/watch?v=-UiMQi9L2ek', why: 'كيف تختار أفضل أعمالك وتعرضها لعملاء حقيقيين — خطوتك نحو دخل من عمل تحبّه.' },
+        { id: 'd9', k: 'course', w: 8, lang: 'EN', t: 'كيف تبني ملف أعمالك، 15 دقيقة — Evan Ranft: How to Build a Photography Portfolio', url: 'https://www.youtube.com/watch?v=-UiMQi9L2ek', why: 'كيف تختار أفضل أعمالك وتعرضها لعملاء حقيقيين — خطوتك نحو دخل من عمل تحبّه.' },
         { id: 'd5', k: 'project', w: 8, sub: 1, t: 'المقال المصوّر: 8 – 12 صورة لقصة إنسانية حقيقية برحلة شعورية، بتعليقات عربية وإنجليزية، وعرض قصير على DaVinci بالصوت' },
         { id: 'd6', k: 'mission', w: 8, sub: 1, t: 'تسويق نفسي: صفحة أعمال (Behance أو إنستغرام) فيها المقال المصوّر + نبذة عنّي بالعربية والإنجليزية' },
         { id: 'd7', k: 'milestone', w: 8, t: 'عرض المقال المصوّر أمام فريق المركز الإعلامي' },

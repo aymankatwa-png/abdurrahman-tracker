@@ -8,15 +8,15 @@
 <meta name="description" content="ديوان عبد الرحمن: مسار في التصوير الإنساني ولغة الزاوية والمقال المصوّر  — وحدة التصوير، المركز الإعلامي في منظمة ممكن. من 8 نوفمبر إلى 31 ديسمبر 2026.">
 <link rel="icon" href="assets/favicon.png">
 <link rel="preload" href="assets/fonts/aref-ruqaa-arabic-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="base.css?v=9">
-<link rel="stylesheet" href="app.css?v=9">
+<link rel="stylesheet" href="base.css?v=10">
+<link rel="stylesheet" href="app.css?v=10">
 </head>
 <body>
 
 <!-- ============ who opens the diwan ============ -->
 <div class="veil hidden" id="rolePicker">
   <div class="veil-card">
-    <img class="veil-st" src="assets/portrait-sm.webp?v=9" alt="" width="130" height="130">
+    <img class="veil-st" src="assets/sticker-sm.webp?v=2" alt="عبد الرحمن" width="224" height="260">
     <h2>من يفتح الديوان؟</h2>
     <p>الإجابة تُحفَظ على هذا الجهاز فقط — ويمكن تغييرها في أي وقت.</p>
     <div class="pick-row">
@@ -63,13 +63,24 @@
     <div class="book" id="book">
       <div class="page page-r" id="pageR">
         <div class="pg-in">
-          <div class="pg-k">الديوان الأول · من <bdi dir="ltr">8</bdi> نوفمبر إلى <bdi dir="ltr">31</bdi> ديسمبر <bdi dir="ltr">2026</bdi></div>
+          <div class="pg-k">الديوان الأول · نوفمبر — ديسمبر <bdi dir="ltr">2026</bdi></div>
           <h1 class="name-h">
             <span class="sr">ديوان عبد الرحمن</span>
-            <svg class="name-ink" id="nameInk" viewBox="0 0 640 230" aria-hidden="true">
-              <text class="nm-pre" x="320" y="58" text-anchor="middle">ديوان</text>
-              <text class="nm" id="nmText" x="320" y="190" text-anchor="middle">عبد الرحمن</text>
-              <circle class="drop" cx="96" cy="196" r="5"/><circle class="drop d2" cx="80" cy="206" r="2.6"/>
+            <span class="nm-pre">ديوان</span>
+            <svg class="name-ink" id="nameInk" viewBox="0 0 640 240" aria-hidden="true">
+              <defs>
+                <filter id="inkEdge" x="-5%" y="-10%" width="110%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale="3"/></filter>
+                <filter id="brush" x="-5%" y="-30%" width="110%" height="160%"><feTurbulence type="fractalNoise" baseFrequency=".035 .6" numOctaves="3" seed="8"/><feDisplacementMap in="SourceGraphic" scale="22"/></filter>
+                <mask id="strips" maskUnits="userSpaceOnUse" x="0" y="0" width="640" height="240">
+                  <g filter="url(#brush)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="70">
+                    <path class="st st1" pathLength="100" d="M630 78 C 470 70, 330 86, 10 74"/>
+                    <path class="st st2" pathLength="100" d="M630 140 C 460 150, 300 132, 10 144"/>
+                    <path class="st st3" pathLength="100" d="M630 200 C 470 194, 320 210, 10 198"/>
+                  </g>
+                </mask>
+              </defs>
+              <g mask="url(#strips)"><text class="nm" filter="url(#inkEdge)" x="320" y="176" text-anchor="middle">عبد الرحمن</text></g>
+              <circle class="drop" cx="78" cy="206" r="5"/><circle class="drop d2" cx="62" cy="219" r="2.6"/>
             </svg>
           </h1>
           <svg class="orn orn-hero" viewBox="0 0 300 30" aria-hidden="true"><path d="M10 15 H120 M180 15 H290" stroke="currentColor" stroke-width="1.2"/><g transform="translate(150 15)"><rect x="-9" y="-9" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.4"/><rect x="-9" y="-9" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.4" transform="rotate(45)"/><circle r="3" fill="currentColor"/></g><circle cx="126" cy="15" r="2" fill="currentColor"/><circle cx="174" cy="15" r="2" fill="currentColor"/></svg>
@@ -86,25 +97,13 @@
       <div class="page page-l">
         <div class="pg-in">
           <figure class="plate" id="plate">
-            <div class="plate-ph"><img src="assets/portrait.webp?v=9" alt="عبد الرحمن — مصوّر وحدة التصوير" width="720" height="900"></div>
+            <div class="plate-ph"><img src="assets/portrait.webp?v=10" alt="عبد الرحمن — مصوّر وحدة التصوير" width="720" height="900"></div>
             <figcaption>صاحب الديوان · <span>عبد الرحمن، مصوّر وحدة التصوير</span></figcaption>
           </figure>
           <div class="latest" id="latest"></div>
         </div>
         <span class="folio">2</span>
       </div>
-      <div class="cover" id="cover" aria-hidden="true">
-        <div class="cv-front">
-          <div class="cv-frame">
-            <svg class="cv-star" viewBox="-50 -50 100 100"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="-30" y="-30" width="60" height="60"/><rect x="-30" y="-30" width="60" height="60" transform="rotate(45)"/><circle r="15"/></g><circle r="5" fill="currentColor"/></svg>
-            <div class="cv-t">ديوان</div>
-            <div class="cv-n">عبد الرحمن</div>
-            <div class="cv-y">الديوان الأول · <bdi dir="ltr">2026</bdi></div>
-          </div>
-        </div>
-        <div class="cv-back"></div>
-      </div>
-      <div class="spine" aria-hidden="true"></div>
     </div>
   </div>
 </header>
@@ -203,9 +202,9 @@
 <div id="toasts" aria-live="polite"></div>
 <canvas id="confetti" aria-hidden="true"></canvas>
 
-<script src="content.js?v=9"></script>
-<script src="theme.js?v=9"></script>
-<script src="shelf.js?v=2"></script>
-<script src="engine.js?v=9"></script>
+<script src="content.js?v=10"></script>
+<script src="theme.js?v=10"></script>
+<script src="shelf.js?v=3"></script>
+<script src="engine.js?v=10"></script>
 </body>
 </html>
