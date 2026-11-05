@@ -8,15 +8,15 @@
 <meta name="description" content="ديوان عبد الرحمن: مسار في التصوير الإنساني ولغة الزاوية والمقال المصوّر  — وحدة التصوير، المركز الإعلامي في منظمة ممكن. من 8 نوفمبر إلى 31 ديسمبر 2026.">
 <link rel="icon" href="assets/favicon.png">
 <link rel="preload" href="assets/fonts/aref-ruqaa-arabic-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="base.css?v=8">
-<link rel="stylesheet" href="app.css?v=8">
+<link rel="stylesheet" href="base.css?v=9">
+<link rel="stylesheet" href="app.css?v=9">
 </head>
 <body>
 
 <!-- ============ who opens the diwan ============ -->
 <div class="veil hidden" id="rolePicker">
   <div class="veil-card">
-    <img class="veil-st" src="assets/portrait-sm.webp?v=8" alt="" width="130" height="130">
+    <img class="veil-st" src="assets/portrait-sm.webp?v=9" alt="" width="130" height="130">
     <h2>من يفتح الديوان؟</h2>
     <p>الإجابة تُحفَظ على هذا الجهاز فقط — ويمكن تغييرها في أي وقت.</p>
     <div class="pick-row">
@@ -86,7 +86,7 @@
       <div class="page page-l">
         <div class="pg-in">
           <figure class="plate" id="plate">
-            <div class="plate-ph"><img src="assets/portrait.webp?v=8" alt="عبد الرحمن — مصوّر وحدة التصوير" width="720" height="900"></div>
+            <div class="plate-ph"><img src="assets/portrait.webp?v=9" alt="عبد الرحمن — مصوّر وحدة التصوير" width="720" height="900"></div>
             <figcaption>صاحب الديوان · <span>عبد الرحمن، مصوّر وحدة التصوير</span></figcaption>
           </figure>
           <div class="latest" id="latest"></div>
@@ -177,9 +177,17 @@
 
 
 <!-- ============ resources ============ -->
+<section class="sec" id="shelfSec">
+  <div class="wrap">
+    <div class="sec-head rv"><div><div class="sec-k">خزانة الكتب</div><h2>رفّ الكتب</h2><p class="sec-sub">مرّر المؤشّر على أي كتاب ليخرج من الرفّ — واضغط عليه ليُفتح ملفّ الـ PDF مباشرةً. كلّ الكتب من إصدارات معهد الجزيرة للإعلام، وكتب مؤسسة هنداوي المترجمة.</p></div></div>
+    <p class="lib-folder rv"><a class="btn btn-ghost btn-sm" id="libFolder" href="#" target="_blank" rel="noopener">📁 مجلّد الكتب كاملًا على OneDrive</a></p>
+    <div class="bookcase rv" id="bookcase"></div>
+    <div class="peek-wrap"><div id="bookPeek" aria-live="polite"></div></div>
+  </div>
+</section>
 <section class="sec" id="library">
   <div class="wrap">
-    <div class="sec-head rv"><div><div class="sec-k">خزانة الكتب</div><h2>مصادر إضافية</h2><p class="sec-sub">مصادر إضافية بعد المسار — اختر منها ما يشدّك.</p></div></div>
+    <div class="sec-head rv"><div><div class="sec-k">شاهد وتعلّم</div><h2>قنوات وفيديوهات تتعلّم منها</h2><p class="sec-sub">بالعربية والإنجليزية: للإلهام، وللتصوير، وللمونتاج.</p></div></div>
     <div id="resources" class="rv"></div>
   </div>
 </section>
@@ -195,8 +203,9 @@
 <div id="toasts" aria-live="polite"></div>
 <canvas id="confetti" aria-hidden="true"></canvas>
 
-<script src="content.js?v=8"></script>
-<script src="theme.js?v=8"></script>
-<script src="engine.js?v=8"></script>
+<script src="content.js?v=9"></script>
+<script src="theme.js?v=9"></script>
+<script src="shelf.js?v=2"></script>
+<script src="engine.js?v=9"></script>
 </body>
 </html>
