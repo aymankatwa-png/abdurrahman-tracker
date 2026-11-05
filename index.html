@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#EEF1F4">
+<meta name="theme-color" content="#EFE6D2">
 <title>أنا أحدّث أنا — عبد الرحمن · وحدة التصوير · المركز الإعلامي — ممكن</title>
 <meta name="description" content="أنا أحدّث أنا: مسار عبد الرحمن في التصوير الإنساني ولغة الزاوية والمقال المصوّر  — وحدة التصوير، المركز الإعلامي في منظمة ممكن. من 8 نوفمبر إلى 31 ديسمبر 2026.">
 <link rel="icon" href="assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="base.css?v=4">
-<link rel="stylesheet" href="app.css?v=4">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css?v=5">
+<link rel="stylesheet" href="app.css?v=5">
 </head>
 <body>
 
@@ -55,31 +55,69 @@
   </div>
 </div>
 
-<!-- ============ hero: the editor's light table ============ -->
+<!-- ============ hero: Ibn al-Haytham's dark house ============ -->
 <header class="table" id="hero">
-  <div class="tbl-light" aria-hidden="true"></div>
   <div class="wrap tbl-top">
     <img class="logo" src="assets/logo-cyan.png" alt="ممكن — منظمة ممكن للتوعية والإعلام" width="132" height="44">
     <div class="unit-tag en">Media Center · <b>Photography Unit</b></div>
   </div>
   <div class="wrap tbl-grid">
     <div class="tbl-copy">
-      <div class="tape tape-label">بكرة رقم 01 · نوفمبر — ديسمبر 2026</div>
+      <div class="tape tape-label">على خُطى ابن الهيثم · بكرة 01 · نوفمبر — ديسمبر 2026</div>
       <h1 class="hero-title">عبد الرحمن</h1>
-      <div class="hero-sub">المصوّر يختار — ولا أحد يختار عنه.</div>
-      <p class="hero-lead">على طاولة المحرّر تُفرَش الصور، ويُختار منها ما يستحق أن يُرى. هذه طاولتك لثمانية أسابيع: لا أحد يقارنك بأحد، ولا أحد يرسم لك خطواتك. كل أسبوع إطار — وأنت من يقرّر هل يُختار أم يُشطب.</p>
-      <figure class="note">
-        <blockquote>أيّهذا الشاكي وما بكَ داءٌ … كُن جميلًا ترَ الوجودَ جميلا</blockquote>
-        <figcaption>— إيليا أبو ماضي</figcaption>
-        <p class="why"><b>لماذا هنا؟</b> لأن الصورة تبدأ من عين صاحبها. مصوّران أمام المشهد نفسه: أحدهما يرى فوضى، والآخر يرى قصة. الفرق في الذي ينظر، لا في الكاميرا.</p>
-      </figure>
+      <div class="hero-sub">كل كاميرا في يدك بدأت من بيتٍ مظلم… وثقبٍ صغير.</div>
+      <p class="hero-lead">قبل نحو ألف عام، كتب العالِم المسلم <b>الحسن بن الهيثم</b> في «كتاب المناظر» أن الضوء إذا دخل من ثقبٍ صغير إلى بيتٍ مظلم، رسم على الجدار المقابل صورةً مقلوبة لما في الخارج. على هذا المبدأ تقوم كل كاميرا حتى اليوم — ومنها كاميرتك.</p>
+      <p class="hero-lead">أنت تكمل طريقًا بدأه عالِمٌ من أمّتك: أن ترى بصدق، وأن تنقل ما رأيت كما هو. لا أحد هنا يقارنك بأحد، ولا أحد يرسم لك خطواتك.</p>
       <div class="hero-cta">
-        <a class="btn btn-main" href="#roll">بكرة الأسابيع</a>
-        <a class="btn btn-ghost" href="#shots">أهدافي الثمانية</a>
+        <a class="btn btn-main" href="#desk">طاولة المحرّر</a>
+        <a class="btn btn-ghost" href="#roll">بكرة الأسابيع</a>
       </div>
     </div>
 
-    <div class="sheet-col">
+    <figure class="obscura" id="obscura">
+      <svg viewBox="0 0 800 470" id="obsSvg" role="img" aria-label="رسم البيت المظلم: صورة عبد الرحمن تمرّ عبر ثقب وترتسم مقلوبة على الجدار">
+        <defs>
+          <clipPath id="roomClip"><rect x="446" y="40" width="324" height="390"/></clipPath>
+          <linearGradient id="roomG" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1c140d"/><stop offset="1" stop-color="#0d0906"/></linearGradient>
+          <radialGradient id="holeG"><stop offset="0" stop-color="#fff3c4"/><stop offset="1" stop-color="#fff3c4" stop-opacity="0"/></radialGradient>
+          <filter id="ink"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.6"/></filter>
+        </defs>
+        <rect x="6" y="6" width="788" height="458" fill="none" stroke="#7a5a2c" stroke-width="1.5"/>
+        <rect x="14" y="14" width="772" height="442" fill="none" stroke="#7a5a2c" stroke-width=".8"/>
+        <rect x="440" y="40" width="330" height="390" fill="url(#roomG)"/>
+        <polygon id="beam" fill="#f5d27a" opacity=".16"/>
+        <g id="outside"><rect id="subFrame" fill="#fff" stroke="#2b2118" stroke-width="1.5"/><image id="subImg" href="assets/lt/f1.webp" preserveAspectRatio="xMidYMid slice"/></g>
+        <g id="inside" clip-path="url(#roomClip)"><image id="projImg" href="assets/lt/f1.webp" preserveAspectRatio="xMidYMid slice"/><rect id="projGlow" fill="#f2b75a" opacity=".22"/></g>
+        <path d="M440 40 V218 M440 242 V430" stroke="#2b2118" stroke-width="12"/>
+        <circle cx="440" cy="230" r="22" fill="url(#holeG)" class="hole"/>
+        <g id="rays" fill="none" stroke="#B8892E" stroke-width="1.6" filter="url(#ink)"></g>
+        <g id="dots" fill="#fff3c4"></g>
+        <g class="abjad" font-family="Amiri, serif" font-size="26" fill="#9b2c22" font-weight="700">
+          <text id="lA">ا</text><text id="lB">ب</text><text x="452" y="222">ج</text><text id="lD">د</text><text id="lH">هـ</text>
+        </g>
+        <text x="600" y="462" font-family="Amiri, serif" font-size="15" fill="#7a5a2c" text-anchor="middle">البيت المظلم</text>
+        <text x="140" y="462" font-family="Amiri, serif" font-size="15" fill="#7a5a2c" text-anchor="middle">ما في الخارج</text>
+      </svg>
+      <figcaption>شكلٌ على طريقة «كتاب المناظر»: ما في الخارج <b>ا ب</b> يمرّ ضوؤه من الثقب <b>ج</b>، فيرتسم مقلوبًا <b>د هـ</b> على جدار البيت المظلم. <span class="hint">حرّك الفأرة فوق الشكل: تتحرك الصورة في الخارج، وتتحرك صورتها في الداخل عكسها — هكذا تعمل كل عدسة.</span></figcaption>
+    </figure>
+  </div>
+  <div class="blink" id="blink" aria-hidden="true"></div>
+</header>
+
+<main>
+<!-- ============ the editor's desk: his real contact sheet ============ -->
+<section class="sec sec-desk" id="desk">
+  <div class="wrap">
+    <div class="desk-grid">
+      <div>
+        <div class="sec-head rv"><div><div class="sec-k">The editor's desk · طاولة المحرّر</div><h2>المصوّر يختار — ولا أحد يختار عنه</h2><p class="sec-sub">على طاولة المحرّر تُفرَش الصور، ويُختار منها ما يستحق أن يُرى. هذه لقطاتك الحقيقية — والدائرة الحمراء اختيار المحرّر. كل أسبوع في مسارك إطار: أنت من يقرّر هل يُختار أم يُشطب.</p></div></div>
+        <figure class="note rv">
+          <blockquote>أيّهذا الشاكي وما بكَ داءٌ … كُن جميلًا ترَ الوجودَ جميلا</blockquote>
+          <figcaption>— إيليا أبو ماضي</figcaption>
+          <p class="why"><b>لماذا هنا؟</b> لأن الصورة تبدأ من عين صاحبها. مصوّران أمام المشهد نفسه: أحدهما يرى فوضى، والآخر يرى قصة. الفرق في الذي ينظر، لا في الكاميرا.</p>
+        </figure>
+      </div>
+      <div class="sheet-col">
       <div class="sheet" id="sheet">
         <i class="tp tp1"></i><i class="tp tp2"></i>
         <img src="assets/lt/sheet.webp" alt="ورقة تلامس: لقطات عبد الرحمن الحقيقية بالأبيض والأسود" width="1810" height="1696" id="sheetImg">
@@ -93,11 +131,9 @@
       <div class="sheet-hint">حرّك العدسة المكبّرة فوق اللقطات — هكذا يختار المحرّرون</div>
       <div class="counter" id="counter"><span class="c-win en" id="cWin">00</span><span class="c-l">لقطة من 36 — تقدّمك في البكرة</span><div class="c-bar"><i id="cBar"></i></div></div>
     </div>
+    </div>
   </div>
-  <div class="blink" id="blink" aria-hidden="true"></div>
-</header>
-
-<main>
+</section>
 <!-- ============ his 8 goals: darkroom test strips ============ -->
 <section class="sec" id="shots">
   <div class="wrap">
@@ -159,6 +195,11 @@
 <section class="sec" id="talk">
   <div class="wrap">
     <div class="sec-head rv"><div><div class="sec-k">On the back of the print</div><h2>أنا أحدّثُ أنا</h2><p class="sec-sub">هذا عنوانٌ اخترتَه أنت. الناس يكتبون خلف صورهم ما لا تقوله الصورة — اكتب كل أسبوع سطرين خلف إطاره لعبد الرحمن في ديسمبر. اضغط على الصورة لتقلبها. لا يقرأ هذه الرسائل غيرك.</p></div></div>
+    <figure class="note note-wide rv">
+      <blockquote>… ويتّهم أيضًا نفسه عند خصامه، فلا يتحامل عليه ولا يتسامح فيه</blockquote>
+      <figcaption>— الحسن بن الهيثم، من تتمّة النصّ نفسه</figcaption>
+      <p class="why"><b>لماذا هنا؟</b> ابن الهيثم لم يكتفِ بمراجعة غيره — راجع نفسه أيضًا، بلا قسوة وبلا تساهل. وهذا بالضبط ما بدأتَه حين كتبتَ «أنا أحدّث أنا».</p>
+    </figure>
     <div class="talk rv" id="talkCard"></div>
   </div>
 </section>
@@ -167,6 +208,11 @@
 <section class="sec" id="ai">
   <div class="wrap">
     <div class="sec-head rv"><div><div class="sec-k">The machine and the shutter</div><h2>الآلة لا تعرف لماذا ضغطتَ الزر</h2><p class="sec-sub">الذكاء الاصطناعي يصنع صورًا جميلة بلا ذاكرة وبلا شاهد. قيمتك أنك كنتَ هناك، وأنك صادقٌ فيما تنقله. هذه قواعدنا في المركز الإعلامي.</p></div></div>
+    <figure class="note note-wide rv">
+      <blockquote>الواجب على الناظر في كتب العلوم، إذا كان غرضه معرفة الحقائق، أن يجعل نفسه خصمًا لكل ما ينظر فيه</blockquote>
+      <figcaption>— الحسن بن الهيثم، «الشكوك على بطليموس»</figcaption>
+      <p class="why"><b>لماذا هنا؟</b> هذا منهج ابن الهيثم مع أعظم علماء عصره: لا يقبل شيئًا قبل أن يختبره. وهو منهجك مع كل ما يكتبه أو يصنعه الذكاء الاصطناعي — كن «خصمًا» له حتى تتحقّق.</p>
+    </figure>
     <div class="ai-grid">
       <ol class="ai-rules rv">
         <li><span><b>لا تُضِف ولا تحذف</b> شيئًا من صورة وثائقية. ما حدث أمام الكاميرا هو ما يُنشر.</span></li>
@@ -214,8 +260,8 @@
 <div id="toasts" aria-live="polite"></div>
 <canvas id="confetti" aria-hidden="true"></canvas>
 
-<script src="content.js?v=4"></script>
-<script src="theme.js?v=4"></script>
-<script src="engine.js?v=4"></script>
+<script src="content.js?v=5"></script>
+<script src="theme.js?v=5"></script>
+<script src="engine.js?v=5"></script>
 </body>
 </html>

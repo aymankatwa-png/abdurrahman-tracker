@@ -2,13 +2,14 @@
    طاولة المحرّر — Abdurrahman · the editor's light table
    ============================================================ */
 :root{
-  --bg:#E8EBEE; --bg2:#F3F4F6; --surface:#FFFFFF; --surface2:#EEF0F3;
-  --ink:#121417; --body:#363B42; --muted:#6C737C; --line:rgba(18,20,23,.09); --line2:rgba(18,20,23,.2);
-  --accent:#D7263D; --accent-ink:#fff; --accent2:#1D4ED8;
-  --ok:#2F9E5B; --warn:#C98A0B; --paper:#F6F4EE; --tape:#E9DDB4;
-  --shadow:0 14px 34px rgba(18,20,23,.14);
+  --bg:#EFE6D2; --bg2:#F6EFDF; --surface:#FBF7EC; --surface2:#F1E8D5;
+  --ink:#2B2118; --body:#4A3D2E; --muted:#857560; --line:rgba(43,33,24,.12); --line2:rgba(43,33,24,.24);
+  --accent:#B8382B; --accent-ink:#fff; --accent2:#1F3C88;
+  --ok:#2F7D4F; --warn:#B8892E; --paper:#F8F2E3; --tape:#E6D7A8; --gold:#B8892E;
+  --shadow:0 14px 34px rgba(60,40,15,.16);
 }
-body{background:var(--bg)}
+body{background:var(--bg) radial-gradient(1200px 800px at 70% -10%,#F8F1E1,transparent 60%)}
+.sec h2,.hero-title{font-family:'Amiri','Dahab',serif}
 .hand{font-family:'Aref Ruqaa','Dahab',serif}
 .subj-add input{color-scheme:light}
 .sec h2{font-weight:900}
@@ -17,7 +18,8 @@ body{background:var(--bg)}
 .syncbar{background:rgba(232,235,238,.86)}
 
 /* ---------- the light table ---------- */
-.table{position:relative;overflow:hidden;padding:0 0 60px;background:#DDE2E7;isolation:isolate}
+.table{position:relative;overflow:hidden;padding:0 0 70px;isolation:isolate;background:radial-gradient(900px 600px at 25% 45%,rgba(245,210,122,.25),transparent 60%),linear-gradient(180deg,#F4ECDB,#EADFC6)}
+.table::before{content:'';position:absolute;inset:18px;border:1.5px solid rgba(122,90,44,.45);outline:1px solid rgba(122,90,44,.25);outline-offset:6px;pointer-events:none}
 .tbl-light{position:absolute;inset:18px 18px 0;border-radius:22px 22px 0 0;z-index:0;
   background:
     linear-gradient(rgba(29,78,216,.05) 1px,transparent 1px) 0 0/40px 40px,
@@ -30,12 +32,13 @@ body{background:var(--bg)}
 .logo{height:38px;width:auto}
 .unit-tag{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 .unit-tag b{color:var(--ink)}
-.tbl-grid{position:relative;z-index:3;display:grid;grid-template-columns:.92fr 1.08fr;gap:40px;align-items:center;margin-top:24px}
+.tbl-grid{position:relative;z-index:3;display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:center;margin-top:18px}
 .tape{display:inline-block;background:var(--tape);color:#4b3f1d;padding:6px 18px;font-weight:700;font-size:14px;transform:rotate(-2deg);box-shadow:0 2px 6px rgba(0,0,0,.12);
   clip-path:polygon(2% 0,98% 3%,100% 50%,98% 97%,2% 100%,0 50%);opacity:.95}
-.hero-title{margin:14px 0 2px;font-weight:900;font-size:clamp(58px,8.4vw,112px);line-height:1.05;color:var(--ink);letter-spacing:-1px}
-.hero-sub{font-family:'Aref Ruqaa','Dahab',serif;font-size:clamp(24px,2.8vw,34px);color:var(--accent);margin:0 0 14px}
-.hero-lead{font-size:17px;color:var(--body);max-width:540px;margin:0 0 18px}
+.hero-title{margin:14px 0 2px;font-weight:700;font-size:clamp(56px,7vw,96px);line-height:1.15;color:var(--ink);white-space:nowrap}
+.hero-sub{font-family:'Amiri','Dahab',serif;font-size:clamp(22px,2.4vw,30px);color:var(--accent);margin:0 0 14px;font-weight:700}
+.hero-lead{font-size:17px;color:var(--body);max-width:560px;margin:0 0 12px}
+.hero-lead b{color:var(--accent2)}
 .hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
 .tbl-copy>*{opacity:0;transform:translateY(14px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
 .table.live .tbl-copy>*{opacity:1;transform:none}
@@ -55,8 +58,7 @@ body{background:var(--bg)}
 
 /* the contact sheet + loupe */
 .sheet-col{display:grid;gap:12px;justify-items:center}
-.sheet{position:relative;width:100%;max-width:640px;background:var(--paper);padding:0;box-shadow:0 30px 60px rgba(18,20,23,.22),0 2px 6px rgba(0,0,0,.08);transform:rotate(1.4deg) translateY(40px);opacity:0;transition:transform 1.2s var(--ease),opacity 1s;cursor:none;touch-action:pan-y}
-.table.live .sheet{transform:rotate(1.4deg);opacity:1}
+.sheet{position:relative;width:100%;max-width:640px;background:#F6F4EE;padding:0;box-shadow:0 30px 60px rgba(18,20,23,.22),0 2px 6px rgba(0,0,0,.08);cursor:none;touch-action:pan-y}
 .sheet img{display:block;width:100%;height:auto}
 .tp{position:absolute;width:120px;height:30px;background:var(--tape);opacity:.88;z-index:2;box-shadow:0 1px 3px rgba(0,0,0,.12)}
 .tp1{top:-12px;right:24px;transform:rotate(4deg)}
@@ -65,9 +67,6 @@ body{background:var(--bg)}
 .grease .circle{fill:none;stroke:#D7263D;stroke-width:9;stroke-linecap:round;stroke-linejoin:round;opacity:.9;stroke-dasharray:4200;stroke-dashoffset:4200}
 .grease .arrow{fill:none;stroke:#D7263D;stroke-width:8;stroke-linecap:round;opacity:.9;stroke-dasharray:600;stroke-dashoffset:600}
 .grease .pick{font-family:'Aref Ruqaa','Dahab',serif;font-size:118px;fill:#D7263D;opacity:0}
-.table.live .grease .circle{transition:stroke-dashoffset 1.6s 1.1s cubic-bezier(.6,.1,.3,1);stroke-dashoffset:0}
-.table.live .grease .arrow{transition:stroke-dashoffset .6s 2.6s ease-out;stroke-dashoffset:0}
-.table.live .grease .pick{transition:opacity .5s 3s;opacity:.92}
 .loupe{position:absolute;z-index:4;width:210px;height:210px;border-radius:50%;pointer-events:none;left:0;top:0;transform:translate(-50%,-50%) scale(.6);opacity:0;transition:opacity .25s,transform .25s;
   background-repeat:no-repeat;box-shadow:0 0 0 7px #1d1f23,0 0 0 9px #4a4e55,0 24px 44px rgba(0,0,0,.45);background-color:#fff}
 .loupe.on{opacity:1;transform:translate(-50%,-50%) scale(1)}
@@ -184,3 +183,41 @@ body{background:var(--bg)}
   .pr-b p{font-size:16px}
   .strip{height:96px}
 }
+
+/* ---------- the dark house (camera obscura) ---------- */
+.obscura{margin:0;background:var(--paper);padding:14px 14px 12px;box-shadow:0 30px 60px rgba(60,40,15,.22);border-radius:4px;transform:translateY(30px);opacity:0;transition:transform 1.2s var(--ease),opacity 1s;
+  background-image:radial-gradient(rgba(122,90,44,.06) 1px,transparent 1px);background-size:5px 5px}
+.table.live .obscura{transform:none;opacity:1}
+.obscura svg{display:block;width:100%;height:auto;cursor:ns-resize;touch-action:pan-y;direction:ltr}
+.obscura figcaption{font-family:'Amiri','Dahab',serif;font-size:16px;color:var(--body);line-height:1.7;margin-top:8px;padding-top:8px;border-top:1px solid var(--line)}
+.obscura figcaption b{color:#9b2c22}
+.obscura .hint{display:block;color:var(--muted);font-size:14px}
+#rays path{stroke-dasharray:900;stroke-dashoffset:900}
+.table.live #rays path{transition:stroke-dashoffset 2s var(--ease);stroke-dashoffset:0}
+.hole{animation:hole 2.4s ease-in-out infinite}
+@keyframes hole{50%{opacity:.6}}
+.abjad text{opacity:0;transition:opacity .8s 1.6s}
+.table.live .abjad text{opacity:1}
+#inside{opacity:0;transition:opacity 1.4s 1.2s}
+.table.live #inside{opacity:.95}
+
+/* ---------- the editor's desk ---------- */
+.sec-desk{padding-top:40px}
+.desk-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:center}
+.sec-desk .sheet-col{position:relative;padding:26px;border-radius:20px;background:radial-gradient(900px 600px at 50% 40%,#FFFFFF 0%,#F4F8FC 50%,#E6ECF2 100%);box-shadow:inset 0 0 80px rgba(150,180,220,.25),0 20px 50px rgba(60,40,15,.18)}
+.sec-desk .sheet{opacity:1;transform:rotate(1.4deg)}
+.sec-desk .grease .circle{stroke-dashoffset:4200}
+.sec-desk.drawn .grease .circle{transition:stroke-dashoffset 1.6s .3s cubic-bezier(.6,.1,.3,1);stroke-dashoffset:0}
+.sec-desk.drawn .grease .arrow{transition:stroke-dashoffset .6s 1.8s ease-out;stroke-dashoffset:0}
+.sec-desk.drawn .grease .pick{transition:opacity .5s 2.2s;opacity:.92}
+.sec-roll{background:#1d1610}
+.roll{background:#0f0b07}
+.pr-b p,.talk-form textarea,.note blockquote,.pledge textarea,.pledge .pl-show{color:#1F3C88}
+@media (max-width:980px){
+  .desk-grid{grid-template-columns:1fr}
+  .tbl-grid{grid-template-columns:1fr}
+  .obscura{order:-1}
+}
+@media (max-width:600px){ .sec-desk .sheet-col{padding:14px} .table::before{inset:8px} }
+#projImg{filter:sepia(.55) brightness(.8) contrast(1.05)}
+#subImg{filter:grayscale(1) contrast(1.05)}

@@ -24,6 +24,48 @@ function lightUp() {
   document.addEventListener('click', function (e) { var b = e.target.closest('[data-task][data-to="pending"]'); if (b && A.isMe()) { var k = $('#blink'); k.classList.remove('go'); void k.offsetWidth; k.classList.add('go'); } });
 }
 
+/* ---------------- Ibn al-Haytham's dark house: light through a pinhole ---------------- */
+function obscura() {
+  var svg = $('#obsSvg'); if (!svg) return;
+  var NS = 'http://www.w3.org/2000/svg', P = { x: 440, y: 230 }, X1 = 210, S = 165, WALL = 765, m = (WALL - P.x) / (P.x - X1);
+  var rays = $('#rays'), dots = $('#dots'), off = 0, tgt = 0, hand = false, rp = [], dp = [];
+  for (var i = 0; i < 5; i++) { var pa = document.createElementNS(NS, 'path'); rays.appendChild(pa); rp.push(pa); }
+  for (var k = 0; k < 14; k++) { var c = document.createElementNS(NS, 'circle'); c.setAttribute('r', '2.2'); dots.appendChild(c); dp.push({ el: c, ray: k % 5, t: Math.random() }); }
+  function at(el, a) { for (var n in a) el.setAttribute(n, a[n]); }
+  function proj(y) { return P.y - (y - P.y) * m; }
+  function layout() {
+    var top = P.y - S / 2 + off, bot = top + S, pt = proj(bot), pb = proj(top), h = pb - pt;
+    at($('#subFrame'), { x: X1 - S - 6, y: top - 6, width: S + 12, height: S + 12 });
+    at($('#subImg'), { x: X1 - S, y: top, width: S, height: S });
+    at($('#projImg'), { x: WALL - h, y: pt, width: h, height: h, transform: 'matrix(-1 0 0 -1 ' + (2 * WALL - h) + ' ' + (pt + pb) + ')' });
+    at($('#projGlow'), { x: WALL - h, y: pt, width: h, height: h });
+    $('#beam').setAttribute('points', [X1, top, P.x, P.y, X1, bot].join(' ') + ' ' + [P.x, P.y, WALL, pt, WALL, pb, P.x, P.y].join(' '));
+    for (var i = 0; i < 5; i++) { var y = top + S * i / 4; rp[i].setAttribute('d', 'M' + X1 + ' ' + y.toFixed(1) + ' L' + P.x + ' ' + P.y + ' L' + WALL + ' ' + proj(y).toFixed(1)); rp[i]._y = y; }
+    at($('#lA'), { x: X1 - S - 30, y: top + 22 }); at($('#lB'), { x: X1 - S - 30, y: bot });
+    at($('#lD'), { x: WALL - h - 26, y: pb }); at($('#lH'), { x: WALL - h - 34, y: pt + 22 });
+  }
+  function frame(t) {
+    if (!hand) tgt = Math.sin(t * .0006) * 38;
+    off += (tgt - off) * .08; layout();
+    dp.forEach(function (d) {
+      d.t += .006; if (d.t > 1) d.t = 0;
+      var y = rp[d.ray]._y, x, yy;
+      if (d.t < .42) { var u = d.t / .42; x = X1 + (P.x - X1) * u; yy = y + (P.y - y) * u; }
+      else { var v = (d.t - .42) / .58; x = P.x + (WALL - P.x) * v; yy = P.y + (proj(y) - P.y) * v; }
+      d.el.setAttribute('cx', x.toFixed(1)); d.el.setAttribute('cy', yy.toFixed(1)); d.el.setAttribute('opacity', (Math.sin(d.t * Math.PI) * .9).toFixed(2));
+    });
+    requestAnimationFrame(frame);
+  }
+  svg.addEventListener('pointermove', function (e) { var r = svg.getBoundingClientRect(); hand = true; tgt = Math.max(-60, Math.min(60, ((e.clientY - r.top) / r.height - .5) * 200)); });
+  svg.addEventListener('pointerleave', function () { hand = false; });
+  layout();
+  if (!reduce) requestAnimationFrame(frame);
+  /* the editor draws his circle when the desk comes into view */
+  var desk = $('#desk');
+  if (desk && 'IntersectionObserver' in window) new IntersectionObserver(function (en, o) { if (en[0].isIntersecting) { desk.classList.add('drawn'); o.disconnect(); } }, { threshold: .35 }).observe(desk);
+  else if (desk) desk.classList.add('drawn');
+}
+
 /* ---------------- the loupe ---------------- */
 function loupe() {
   var sh = $('#sheet'), lp = $('#loupe'), img = $('#sheetImg'); if (!sh || !lp) return;
@@ -200,7 +242,7 @@ function paintTalk(C) {
 
 /* ---------------- hooks ---------------- */
 T.hooks = {
-  init: function (api) { A = api; lightUp(); loupe(); plInit(); tkInit(); },
+  init: function (api) { A = api; lightUp(); obscura(); loupe(); plInit(); tkInit(); },
   render: function (C) { paintCounter(C); paintStrips(C); paintRoll(C); paintPledge(C); paintTalk(C); },
   managerExtra: function (C, api) {
     var n = counts(C), w = curWeek(C), habits = T.checks.filter(function (c) { return api.get('c:' + w + ':' + c.id, false); }).length, pl = api.get('pledge', '');
