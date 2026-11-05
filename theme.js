@@ -17,9 +17,14 @@ var bd = function (v) { return '<bdi dir="ltr">' + v + '</bdi>'; };
 function openBook() {
   var hero = $('#hero');
   var go = function () {
-    hero.classList.add('open');
-    setTimeout(function () { hero.classList.add('ink'); }, reduce ? 0 : 700);
-    setTimeout(function () { hero.classList.add('done'); }, reduce ? 0 : 1600);
+    var reveal = function () {
+      hero.classList.add('open');
+      setTimeout(function () { hero.classList.add('ink'); }, reduce ? 0 : 700);
+      setTimeout(function () { hero.classList.add('done'); }, reduce ? 0 : 1600);
+      go2();
+    };
+    /* old stained pages flip by first (flip.js), then the clean page opens */
+    if (window.DIWAN_FLIP) window.DIWAN_FLIP(reveal); else reveal();
   };
   var fonts = document.fonts && document.fonts.load ? Promise.all([document.fonts.load('700 80px "Aref Ruqaa"'), document.fonts.load('400 20px "Amiri"')]) : Promise.resolve();
   var started = false, start = function () { if (started) return; started = true; setTimeout(go, reduce ? 0 : 450); };
@@ -41,8 +46,7 @@ function openBook() {
     setTimeout(function () { svg.classList.add('done'); }, (t + .6) * 1000);
   };
   var started2 = false;
-  var go2 = function () { if (started2) return; started2 = true; setTimeout(write, reduce ? 0 : 650); };
-  fonts.then(go2, go2); setTimeout(go2, 2600);
+  function go2() { if (started2) return; started2 = true; setTimeout(write, reduce ? 0 : 200); }
 }
 
 /* write verses with ink as they scroll into view */

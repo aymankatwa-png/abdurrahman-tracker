@@ -322,3 +322,29 @@ body{background:var(--bg) var(--grain)}
 .lg .ms::after{content:'';position:absolute;left:2px;right:2px;top:50%;height:3px;background:var(--accent);border-radius:3px;transform:rotate(-8deg)}
 .lg b{color:var(--ink)}
 .guide-link{display:inline-flex}
+
+/* ---------- old pages flip by before the diwan opens (flip.js) ---------- */
+.flip{position:absolute;inset:0;z-index:5;transform-style:preserve-3d;pointer-events:none;opacity:0;transition:opacity .25s ease}
+.flip.in{opacity:1}
+.flip.out{opacity:0;transition:opacity .4s ease .05s}
+.fl-base,.fl-leaf{position:absolute}
+.fl-base{background:var(--paper) center/100% 100% no-repeat;box-shadow:0 30px 40px -10px rgba(60,40,15,.3),0 3px 6px rgba(60,40,15,.14)}
+.fl-base.side-l{border-radius:14px 4px 4px 14px;box-shadow:inset -18px 0 24px -18px rgba(80,55,20,.35),0 30px 40px -10px rgba(60,40,15,.3)}
+.fl-base.side-r{border-radius:4px 14px 14px 4px;box-shadow:inset 18px 0 24px -18px rgba(80,55,20,.35),0 30px 40px -10px rgba(60,40,15,.3)}
+.fl-base.side-one{border-radius:12px 12px 0 0}
+.fl-base.clean{background-image:var(--grain)}
+.fl-base.clean::after{content:'';position:absolute;inset:16px;border:1px solid rgba(168,50,42,.28);outline:1px solid rgba(168,50,42,.14);outline-offset:4px;border-radius:2px}
+.fl-leaf{transform-style:preserve-3d}
+.fl-strip{position:absolute;top:0;transform-origin:100% 50%;transform-style:preserve-3d}
+.fc{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background-color:var(--paper);background-repeat:no-repeat;overflow:hidden}
+.fc.b{transform:rotateY(180deg)}
+.fc.f.edge{border-radius:14px 0 0 14px}
+.flip.one .fc.f.edge{border-radius:12px 0 0 0}
+/* the bend catches light and shadow */
+.fc::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(40,22,8,var(--l,0)),rgba(40,22,8,var(--r,0)));z-index:1}
+.fc.b::before{background:linear-gradient(270deg,rgba(40,22,8,var(--l,0)),rgba(40,22,8,var(--r,0)))}
+/* while old pages turn, the real ones wait; then they appear at once under the last leaf */
+.diwan.flipping .page{opacity:0;transition:none}
+.diwan.flipped .page{transition:none!important;opacity:1;transform:none}
+@media (max-width:640px){ .fl-base.clean::after{inset:9px} }
+@media (prefers-reduced-motion:reduce){ .flip{display:none} }
