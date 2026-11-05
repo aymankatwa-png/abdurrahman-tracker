@@ -21,7 +21,7 @@ body{background:var(--bg) var(--grain)}
 .sec h2{font-weight:700;font-size:clamp(28px,3.4vw,40px)}
 .sec-k{color:var(--accent);font-family:'Aref Ruqaa','Dahab',serif;font-size:22px;letter-spacing:0;text-transform:none;font-weight:700}
 .subj-add input{color-scheme:light}
-.veil-card img.veil-st{border-radius:50%;object-fit:cover;object-position:50% 12%;background:#E6D6B4}
+.veil-card img.veil-st{border-radius:50%;object-fit:cover;object-position:50% 12%;background:#EFE2C6;mix-blend-mode:multiply}
 .syncbar{background:rgba(243,235,216,.9)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
@@ -68,8 +68,8 @@ body{background:var(--bg) var(--grain)}
 .plate::before,.plate::after{content:'';position:absolute;width:44px;height:44px;border:0 solid #1E1A16;opacity:.75}
 .plate::before{top:-6px;right:-6px;border-top-width:3px;border-right-width:3px}
 .plate::after{bottom:-6px;left:-6px;border-bottom-width:3px;border-left-width:3px}
-.plate-ph{position:relative;aspect-ratio:4/5;overflow:hidden;background:#cfdbe6}
-.plate-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 25%}
+.plate-ph{position:relative;aspect-ratio:4/5;overflow:hidden;background:radial-gradient(circle at 50% 35%,#FBF4E4 0%,#EFE2C6 60%,#E2CFA8 100%)}
+.plate-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%;mix-blend-mode:multiply}
 .plate figcaption{font-family:'Amiri',serif;font-size:15px;color:var(--ink);text-align:center;margin-top:8px}
 .plate figcaption span{color:var(--muted)}
 .page-l .plate{opacity:0;transform:rotate(-1.2deg) translateY(14px);transition:opacity 1s .2s var(--ease),transform 1s .2s var(--ease)}
