@@ -3,12 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#0D0A0A">
+<meta name="theme-color" content="#0B1426">
 <title>أنا أحدّث أنا — عبد الرحمن · وحدة التصوير · المركز الإعلامي — ممكن</title>
-<meta name="description" content="أنا أحدّث أنا: مسار عبد الرحمن في التصوير الإنساني ولغة الزاوية والمقال المصوّر — وحدة التصوير، المركز الإعلامي في منظمة ممكن. من 8 نوفمبر إلى 31 ديسمبر 2026.">
+<meta name="description" content="أنا أحدّث أنا: مسار عبد الرحمن في التصوير الإنساني ولغة الزاوية والمقال المصوّر بروح أندلسية — وحدة التصوير، المركز الإعلامي في منظمة ممكن. من 8 نوفمبر إلى 31 ديسمبر 2026.">
 <link rel="icon" href="assets/favicon.png">
-<link rel="stylesheet" href="base.css?v=1">
-<link rel="stylesheet" href="app.css?v=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css?v=3">
+<link rel="stylesheet" href="app.css?v=3">
 </head>
 <body>
 
@@ -16,7 +19,7 @@
 <div class="veil hidden" id="rolePicker">
   <div class="veil-card">
     <img class="veil-st" src="assets/sticker-sm.webp" alt="" width="130" height="130">
-    <h2>من في غرفة التحميض؟</h2>
+    <h2>من على باب الدار؟</h2>
     <p>الإجابة تُحفَظ على هذا الجهاز فقط — ويمكن تغييرها في أي وقت.</p>
     <div class="pick-row">
       <button class="btn btn-main" data-role="me">أنا عبد الرحمن</button>
@@ -52,60 +55,95 @@
   </div>
 </div>
 
-<!-- ============ hero: the darkroom ============ -->
-<header class="hero" id="hero">
-  <div class="safelight" aria-hidden="true"></div>
-  <div class="grain" aria-hidden="true"></div>
-  <div class="wrap hero-in">
-    <div class="hero-top">
-      <img class="logo" src="assets/logo-white.png" alt="ممكن — منظمة ممكن للتوعية والإعلام" width="132" height="44">
-      <div class="unit-tag en">Media Center · <b>Photography Unit</b></div>
+<!-- ============ intro: the carved door opens ============ -->
+<div class="door" id="door" aria-hidden="true">
+  <div class="leaf l"><i class="ring"></i></div>
+  <div class="leaf r"><i class="ring"></i></div>
+  <div class="lintel"><span>دار عبد الرحمن</span></div>
+</div>
+
+<!-- ============ hero: the courtyard ============ -->
+<header class="court" id="hero">
+  <canvas id="geo" aria-hidden="true"></canvas>
+  <svg class="muqarnas" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0H1200V20 Q1185 52 1170 20 Q1155 52 1140 20 Q1125 52 1110 20 Q1095 52 1080 20 Q1065 52 1050 20 Q1035 52 1020 20 Q1005 52 990 20 Q975 52 960 20 Q945 52 930 20 Q915 52 900 20 Q885 52 870 20 Q855 52 840 20 Q825 52 810 20 Q795 52 780 20 Q765 52 750 20 Q735 52 720 20 Q705 52 690 20 Q675 52 660 20 Q645 52 630 20 Q615 52 600 20 Q585 52 570 20 Q555 52 540 20 Q525 52 510 20 Q495 52 480 20 Q465 52 450 20 Q435 52 420 20 Q405 52 390 20 Q375 52 360 20 Q345 52 330 20 Q315 52 300 20 Q285 52 270 20 Q255 52 240 20 Q225 52 210 20 Q195 52 180 20 Q165 52 150 20 Q135 52 120 20 Q105 52 90 20 Q75 52 60 20 Q45 52 30 20 Q15 52 0 20Z" fill="#081022"/><path d="M0 20 Q15 52 30 20 Q45 52 60 20 Q75 52 90 20 Q105 52 120 20 Q135 52 150 20 Q165 52 180 20 Q195 52 210 20 Q225 52 240 20 Q255 52 270 20 Q285 52 300 20 Q315 52 330 20 Q345 52 360 20 Q375 52 390 20 Q405 52 420 20 Q435 52 450 20 Q465 52 480 20 Q495 52 510 20 Q525 52 540 20 Q555 52 570 20 Q585 52 600 20 Q615 52 630 20 Q645 52 660 20 Q675 52 690 20 Q705 52 720 20 Q735 52 750 20 Q765 52 780 20 Q795 52 810 20 Q825 52 840 20 Q855 52 870 20 Q885 52 900 20 Q915 52 930 20 Q945 52 960 20 Q975 52 990 20 Q1005 52 1020 20 Q1035 52 1050 20 Q1065 52 1080 20 Q1095 52 1110 20 Q1125 52 1140 20 Q1155 52 1170 20 Q1185 52 1200 20" fill="none" stroke="#D4AF37" stroke-width="1.5" opacity=".7"/></svg>
+  <div class="lamp lamp-a"><svg class="lantern" viewBox="0 0 80 210" aria-hidden="true"><line x1="40" y1="0" x2="40" y2="38" stroke="#9c7a33" stroke-width="2"/><circle cx="40" cy="40" r="4" fill="none" stroke="#b8913c" stroke-width="2"/><path d="M27 44h26l-4 12H31z" fill="#b8913c"/><path class="glass" d="M21 56h38l7 30-7 50H21l-7-50z"/><g stroke="#8a6a2a" stroke-width="2.2" fill="none"><path d="M21 56l7 30-7 50M59 56l-7 30 7 50M40 56v80M14 86h52"/><path d="M40 62l8 12-8 12-8-12z M40 98l8 12-8 12-8-12z"/></g><path d="M21 136h38l-9 16H30z" fill="#b8913c"/><path d="M34 152h12l-6 14z" fill="#9c7a33"/></svg></div>
+  <div class="lamp lamp-b"><svg class="lantern" viewBox="0 0 80 210" aria-hidden="true"><line x1="40" y1="0" x2="40" y2="38" stroke="#9c7a33" stroke-width="2"/><circle cx="40" cy="40" r="4" fill="none" stroke="#b8913c" stroke-width="2"/><path d="M27 44h26l-4 12H31z" fill="#b8913c"/><path class="glass" d="M21 56h38l7 30-7 50H21l-7-50z"/><g stroke="#8a6a2a" stroke-width="2.2" fill="none"><path d="M21 56l7 30-7 50M59 56l-7 30 7 50M40 56v80M14 86h52"/><path d="M40 62l8 12-8 12-8-12z M40 98l8 12-8 12-8-12z"/></g><path d="M21 136h38l-9 16H30z" fill="#b8913c"/><path d="M34 152h12l-6 14z" fill="#9c7a33"/></svg></div>
+
+  <div class="wrap court-top">
+    <img class="logo" src="assets/logo-white.png" alt="ممكن — منظمة ممكن للتوعية والإعلام" width="132" height="44">
+    <div class="unit-tag en">Media Center · <b>Photography Unit</b></div>
+  </div>
+
+  <div class="wrap court-grid">
+    <div class="court-copy">
+      <div class="kicker"><i class="st8"></i> دار عبد الرحمن · <span class="en">Photography Unit</span></div>
+      <h1 class="hero-title">عبد الرحمن</h1>
+      <div class="hero-sub">مصوّرٌ يرى بقلبه قبل عدسته</div>
+      <p class="hero-lead">في العمارة الأندلسية، القوس ليس مدخلًا فقط — إنه أقدم «إطارٍ داخل إطار» عرفه المصوّرون. هذه دارك لثمانية أسابيع: لا أحد هنا يقارنك بأحد، ولا أحد يملي عليك. أنت تختار الإطار، وأنت تفي.</p>
+      <figure class="naqsh">
+        <blockquote>أيّهذا الشاكي وما بكَ داءٌ … كُن جميلًا ترَ الوجودَ جميلا</blockquote>
+        <figcaption>إيليا أبو ماضي</figcaption>
+        <p class="why"><b>لماذا هنا؟</b> لأن الصورة تبدأ من عين صاحبها. مصوّران يقفان أمام المشهد نفسه، فيرى أحدهما فوضى، ويرى الآخر قصة — والفرق في الذي ينظر، لا في الكاميرا.</p>
+      </figure>
+      <div class="hero-cta">
+        <a class="btn btn-main" href="#riwaq">رواق الأسابيع</a>
+        <a class="btn btn-ghost btn-glass" href="#shots">أهدافي الثمانية</a>
+      </div>
     </div>
 
-    <div class="hero-grid">
-      <div class="hero-copy">
-        <div class="kicker">غرفة التحميض · <span class="en">The Darkroom</span></div>
-        <h1 class="hero-title">أنا<br>أحدّث<br><span>أنا</span></h1>
-        <p class="hero-lead">هنا لا أحد يقارنك بأحد، ولا أحد يرسم لك خطواتك. المقارنة الوحيدة في هذه الغرفة: عبد الرحمن اليوم، مع عبد الرحمن قبل أسبوع. أنت تختار، وأنت تفي، والصورة تتحمّض.</p>
-        <div class="talk-hero" id="talkHero">
-          <div class="bub me-now"><small>أنا · نوفمبر</small><p id="tNow">ماذا ستقول لي في ديسمبر؟</p></div>
-          <div class="bub me-then"><small>أنا · ديسمبر</small><p id="tThen">اكتب لي سطرين كل أسبوع… وفي النهاية سأجيبك.</p></div>
-        </div>
-        <div class="hero-cta">
-          <a class="btn btn-main" href="#sheet">شريط الأسابيع</a>
-          <a class="btn btn-ghost" href="#week">مهام هذا الأسبوع</a>
-        </div>
+    <div class="arch-col">
+      <div class="arch" id="archFrame">
+        <svg class="arch-svg" viewBox="0 0 400 520" aria-hidden="true">
+          <defs>
+            <clipPath id="archClip"><path d="M40 520 V250 C40 250 22 214 22 170 A178 178 0 1 1 378 170 C378 214 360 250 360 250 V520Z"/></clipPath>
+            <linearGradient id="raysG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFE7A8" stop-opacity=".0"/><stop offset=".45" stop-color="#FFE7A8" stop-opacity=".22"/><stop offset=".55" stop-color="#FFE7A8" stop-opacity=".0"/></linearGradient>
+            <linearGradient id="goldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F3D27A"/><stop offset=".5" stop-color="#C89B2C"/><stop offset="1" stop-color="#8A6A1E"/></linearGradient>
+          </defs>
+          <g clip-path="url(#archClip)">
+            <image id="archImg" href="assets/portrait.webp" x="-10" y="-10" width="420" height="540" preserveAspectRatio="xMidYMid slice"/>
+            <rect class="rays" x="0" y="0" width="400" height="520" fill="url(#raysG)"/>
+          </g>
+          <path class="arch-line" d="M40 520 V250 C40 250 22 214 22 170 A178 178 0 1 1 378 170 C378 214 360 250 360 250 V520" fill="none" stroke="url(#goldG)" stroke-width="7"/>
+          <path class="arch-line2" d="M54 520 V252 C54 252 38 216 38 172 A162 162 0 1 1 362 172 C362 216 346 252 346 252 V520" fill="none" stroke="#D4AF37" stroke-width="1.5" opacity=".6"/>
+        </svg>
+        <div class="arch-cap">إطارٌ داخل إطار — عبد الرحمن تحت القوس</div>
       </div>
-
-      <div class="tray-wrap">
-        <div class="tray" id="tray">
-          <div class="print" id="print">
-            <img src="assets/sticker.webp" alt="عبد الرحمن" width="300" height="300" id="printImg">
-            <div class="print-cap"><span class="en">MMC · 2026</span><span id="printLbl">الصورة تتحمّض</span></div>
-          </div>
-          <div class="liquid" aria-hidden="true"></div>
-        </div>
-        <div class="tray-read"><b class="en" id="trayPct">0%</b><span>من الصورة تحمّض</span></div>
-      </div>
+      <div class="rosette" id="rosette" aria-label="نجمة التقدّم"></div>
     </div>
   </div>
+  <div class="glow-burst" id="glowBurst" aria-hidden="true"></div>
 </header>
 
 <main>
-<!-- ============ contact sheet ============ -->
-<section class="sec" id="sheet">
+<!-- ============ his own 8 goals: eight tiles ============ -->
+<section class="sec" id="shots">
   <div class="wrap">
-    <div class="sec-head rv"><div><div class="sec-k">Contact sheet</div><h2>شريط الأسابيع الثمانية</h2><p class="sec-sub">كل أسبوع إطار في الفيلم. تنهي مهامه في وقتها فيتحمّض. يمرّ الأسبوع ومهامه ناقصة؟ يحترق الإطار — ولا يعود. أسبوع الامتحانات يُحفظ إطاره إذا حقّقت ساعات الدراسة.</p></div></div>
-    <div class="film rv" id="film"></div>
-    <div class="sheet-stats rv" id="sheetStats"></div>
-    <div class="pledge rv" id="pledge"></div>
+    <div class="sec-head rv"><div><div class="sec-k">Eight goals · ثماني بلاطات</div><h2>أهدافي الثمانية</h2><p class="sec-sub">كتبتَها بخطّ يدك. كل هدف بلاطةٌ في الزليج، تمتلئ ألوانها كلما اقتربتَ منه — ومربوطة بمكانها في المسار.</p></div></div>
+    <div class="tiles" id="tiles"></div>
+  </div>
+</section>
+
+<!-- ============ the arcade of weeks ============ -->
+<section class="sec" id="riwaq">
+  <div class="wrap">
+    <div class="sec-head rv"><div><div class="sec-k">The arcade · الرواق</div><h2>رواق الأسابيع الثمانية</h2><p class="sec-sub">ثمانية أقواس، تحت كل قوس قنديل. تنهي مهام الأسبوع في وقتها فيضيء قنديله. يمرّ الأسبوع ومهامه ناقصة؟ ينطفئ القنديل — ولا يعود. أسبوع الامتحانات يبقى مضاءً إذا حقّقت ساعات دراستك.</p></div></div>
+    <div class="arcade rv" id="arcade"></div>
+    <div class="sheet-stats rv" id="arcStats"></div>
+    <div class="riwaq-low">
+      <figure class="naqsh naqsh-wide rv">
+        <blockquote>لكلّ شيءٍ إذا ما تمّ نقصانُ … فلا يُغرَّ بطيبِ العيشِ إنسانُ</blockquote>
+        <figcaption>أبو البقاء الرُّندي — من رثائه للأندلس</figcaption>
+        <p class="why"><b>لماذا هنا؟</b> شاعرٌ أندلسيّ رأى مدنًا جميلة تضيع ولا تعود. قالها حتى لا يُغترّ أحدٌ بما بين يديه. الأسبوع مثلها: إن مضى بلا عمل، انطفأ قنديله ولن يعود — وهذا ما يجعل كل أسبوع ثمينًا.</p>
+      </figure>
+      <div class="pledge rv" id="pledge"></div>
+    </div>
   </div>
 </section>
 
 <!-- ============ this week ============ -->
 <section class="sec" id="week">
   <div class="wrap">
-    <div class="sec-head rv"><div><div class="sec-k">This week</div><h2>إطار هذا الأسبوع</h2></div></div>
+    <div class="sec-head rv"><div><div class="sec-k">This week</div><h2>قوس هذا الأسبوع</h2></div></div>
     <div class="card rv" id="weekCard"></div>
   </div>
 </section>
@@ -113,7 +151,12 @@
 <!-- ============ studies ============ -->
 <section class="sec" id="studiesSec">
   <div class="wrap">
-    <div class="sec-head rv"><div><div class="sec-k">Studies first</div><h2>دراستي أولًا</h2><p class="sec-sub">«التركيز على الدراسة» هدف كتبتَه أنت. لذلك هي هنا في قلب المسار: ربع تقدّمك الكامل، وأسبوع الامتحان يُحفظ إطاره إذا حقّقت ساعاتك.</p></div></div>
+    <div class="sec-head rv"><div><div class="sec-k">Studies first</div><h2>دراستي أولًا</h2><p class="sec-sub">«التركيز على الدراسة» هدفٌ كتبتَه أنت. لذلك هي في قلب المسار: ربع تقدّمك الكامل، وأسبوع الامتحان يبقى قنديله مضاءً إذا حقّقت ساعاتك.</p></div></div>
+    <figure class="naqsh naqsh-wide rv">
+      <blockquote>بقدرِ الكدِّ تُكتسبُ المعالي … ومن طلبَ العُلا سهرَ الليالي</blockquote>
+      <figcaption>يُنسب إلى الإمام الشافعي</figcaption>
+      <p class="why"><b>لماذا هنا؟</b> لأن ساعات الدراسة التي تسجّلها هنا هي «الكدّ» الذي يتحدث عنه البيت. لا طريق مختصر — ساعة بعد ساعة.</p>
+    </figure>
     <div id="studies" class="rv"></div>
   </div>
 </section>
@@ -128,10 +171,10 @@
   <div class="wrap"><div class="mgr" id="mgrPanel"></div></div>
 </section>
 
-<!-- ============ the rolls ============ -->
+<!-- ============ the four arches ============ -->
 <section class="sec" id="rolls">
   <div class="wrap">
-    <div class="sec-head rv"><div><div class="sec-k">Four rolls of film</div><h2>الأفلام الأربعة</h2><p class="sec-sub">كل فيلم أسبوعان. تنهي المهمة فتصبح «قيد المراجعة» حتى يعتمدها المشرف. الترتيب داخل الأسبوع لك.</p></div></div>
+    <div class="sec-head rv"><div><div class="sec-k">Four arches</div><h2>الأقواس الأربعة</h2><p class="sec-sub">كل قوس أسبوعان. القوس في العمارة الأندلسية أقدم «إطار داخل إطار» — وهو ما يتعلّمه كل مصوّر. تنهي المهمة فتصبح «قيد المراجعة» حتى يعتمدها المشرف، والترتيب داخل الأسبوع لك.</p></div></div>
     <div id="chapters"></div>
   </div>
 </section>
@@ -139,7 +182,12 @@
 <!-- ============ the dialogue ============ -->
 <section class="sec" id="talk">
   <div class="wrap">
-    <div class="sec-head rv"><div><div class="sec-k">I talk to me</div><h2>حوار الأسابيع</h2><p class="sec-sub">سطران كل أسبوع لعبد الرحمن في ديسمبر: ماذا فعلت، ماذا خفت، ماذا تعلّمت. في النهاية تقرأ الحوار كاملًا — وتكتب الردّ.</p></div></div>
+    <div class="sec-head rv"><div><div class="sec-k">I talk to me</div><h2>أنا أحدّثُ أنا</h2><p class="sec-sub">هذا عنوانٌ اخترتَه أنت، في حوارٍ كتبتَه بينك وبين نفسك. سطران كل أسبوع لعبد الرحمن في ديسمبر: ماذا فعلت، ماذا خفت، ماذا تعلّمت. في النهاية تقرأ الحوار كاملًا — وتكتب الردّ.</p></div></div>
+    <figure class="naqsh naqsh-wide rv">
+      <blockquote>﴿بَلِ الْإِنسَانُ عَلَىٰ نَفْسِهِ بَصِيرَةٌ﴾</blockquote>
+      <figcaption>سورة القيامة · 14</figcaption>
+      <p class="why"><b>لماذا هنا؟</b> لأن هذا الحوار لك وحدك. أنت أعلم الناس بنفسك وأصدقهم في محاسبتها — لذلك لا يقرأ أحدٌ هذه الرسائل غيرك، ولا يقارنك بها أحد.</p>
+    </figure>
     <div class="talk card rv" id="talkCard"></div>
   </div>
 </section>
@@ -147,7 +195,7 @@
 <!-- ============ AI ============ -->
 <section class="sec" id="ai">
   <div class="wrap">
-    <div class="sec-head rv"><div><div class="sec-k">The machine and the shutter</div><h2>الآلة لا تعرف لماذا ضغطتَ الزر</h2><p class="sec-sub">الذكاء الاصطناعي يصنع صورًا جميلة بلا ذاكرة وبلا شاهد. قيمتك أنك كنتَ هناك، وأنك صادق فيما تنقله. هذه قواعدنا في المركز الإعلامي.</p></div></div>
+    <div class="sec-head rv"><div><div class="sec-k">The machine and the shutter</div><h2>الآلة لا تعرف لماذا ضغطتَ الزر</h2><p class="sec-sub">الذكاء الاصطناعي يصنع صورًا جميلة بلا ذاكرة وبلا شاهد. قيمتك أنك كنتَ هناك، وأنك صادقٌ فيما تنقله. هذه قواعدنا في المركز الإعلامي.</p></div></div>
     <div class="ai-grid">
       <ol class="ai-rules rv">
         <li><span><b>لا تُضِف ولا تحذف</b> شيئًا من صورة وثائقية. ما حدث أمام الكاميرا هو ما يُنشر.</span></li>
@@ -179,7 +227,7 @@
 <!-- ============ resources ============ -->
 <section class="sec" id="library">
   <div class="wrap">
-    <div class="sec-head rv"><div><div class="sec-k">The shelf</div><h2>رفّ الغرفة</h2><p class="sec-sub">مصادر إضافية بعد المسار — اختر منها ما يشدّك.</p></div></div>
+    <div class="sec-head rv"><div><div class="sec-k">The library · خزانة الكتب</div><h2>خزانة الدار</h2><p class="sec-sub">مصادر إضافية بعد المسار — اختر منها ما يشدّك.</p></div></div>
     <div id="resources" class="rv"></div>
   </div>
 </section>
@@ -195,8 +243,8 @@
 <div id="toasts" aria-live="polite"></div>
 <canvas id="confetti" aria-hidden="true"></canvas>
 
-<script src="content.js?v=1"></script>
-<script src="theme.js?v=1"></script>
-<script src="engine.js?v=1"></script>
+<script src="content.js?v=3"></script>
+<script src="theme.js?v=3"></script>
+<script src="engine.js?v=3"></script>
 </body>
 </html>
