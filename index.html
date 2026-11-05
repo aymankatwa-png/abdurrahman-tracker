@@ -8,15 +8,15 @@
 <meta name="description" content="ديوان عبد الرحمن: مسار في التصوير الإنساني ولغة الزاوية والمقال المصوّر  — وحدة التصوير، المركز الإعلامي في منظمة ممكن. من 8 نوفمبر إلى 31 ديسمبر 2026.">
 <link rel="icon" href="assets/favicon.png">
 <link rel="preload" href="assets/fonts/aref-ruqaa-arabic-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="base.css?v=11">
-<link rel="stylesheet" href="app.css?v=11">
+<link rel="stylesheet" href="base.css?v=12">
+<link rel="stylesheet" href="app.css?v=12">
 </head>
 <body>
 
 <!-- ============ who opens the diwan ============ -->
 <div class="veil hidden" id="rolePicker">
   <div class="veil-card">
-    <img class="veil-st" src="assets/sticker-sm.webp?v=3" alt="عبد الرحمن" width="224" height="260">
+    <img class="veil-st" src="assets/sticker-sm.webp?v=4" alt="عبد الرحمن" width="224" height="260">
     <h2>من يفتح الديوان؟</h2>
     <p>الإجابة تُحفَظ على هذا الجهاز فقط — ويمكن تغييرها في أي وقت.</p>
     <div class="pick-row">
@@ -93,6 +93,7 @@
           <div class="hero-cta">
             <a class="btn btn-main" href="#diwan">قصيدة الأسابيع</a>
             <a class="btn btn-ghost" href="#goals">أبواب الديوان</a>
+            <a class="btn btn-ghost guide-link" href="guide.html">كيف أستخدم الديوان؟</a>
           </div>
         </div>
         <span class="folio">1</span>
@@ -100,7 +101,7 @@
       <div class="page page-l">
         <div class="pg-in">
           <figure class="plate" id="plate">
-            <div class="plate-ph"><img src="assets/portrait.webp?v=11" alt="عبد الرحمن — مصوّر وحدة التصوير" width="720" height="900"></div>
+            <div class="plate-ph"><img src="assets/portrait.webp?v=12" alt="عبد الرحمن — مصوّر وحدة التصوير" width="720" height="900"></div>
             <figcaption>صاحب الديوان · <span>عبد الرحمن، مصوّر وحدة التصوير</span></figcaption>
           </figure>
           <div class="latest" id="latest"></div>
@@ -112,15 +113,23 @@
 </header>
 
 <main>
+<!-- ============ the Quran — its own section, apart from the poem ============ -->
+<section class="sec sec-quran" id="amanah">
+  <div class="wrap">
+    <figure class="mushaf rv">
+      <div class="mushaf-k">أمانة القلم</div>
+      <blockquote class="ayah"><span class="br">﴿</span>نٓ ۚ وَٱلْقَلَمِ وَمَا يَسْطُرُونَ<span class="br">﴾</span></blockquote>
+      <figcaption class="ayah-ref">سورة القلم · الآية <bdi dir="ltr">1</bdi></figcaption>
+      <p class="mushaf-why">أقسم الله تعالى بالقلم وبما يُكتَب به؛ فالكلمة أمانة. وعملك كلّه كتابة: تكتب بالضوء حين تصوّر، وبالحبر حين تكتب تعليقًا أو نصًّا. والأمانة واحدة في الحالين: لا تنقل إلا ما رأيت، ولا تنشر الصورة إلا كما كانت.</p>
+    </figure>
+  </div>
+</section>
+
 <!-- ============ the poem of the weeks ============ -->
 <section class="sec sec-poem" id="diwan">
   <div class="wrap">
-    <div class="sec-head rv"><div><div class="sec-k">قصيدة الأسابيع</div><h2>ثمانية أسابيع… ثمانية أبيات</h2><p class="sec-sub">كل أسبوع بيتٌ في قصيدتك. أسبوعٌ أنهيتَ مهامه في وقته يُختم بالحبر الأحمر: «تمّ». أسبوع امتحانات حقّقت فيه ساعات دراستك يُختم بالأزرق: «محفوظ». أما أسبوعٌ مضى ومهامه ناقصة فيُشطب بيته بخطّ أحمر — والحبر لا يُمحى.</p></div></div>
-    <figure class="epi rv">
-      <blockquote>نٓ وَالْقَلَمِ وَمَا يَسْطُرُونَ</blockquote>
-      <figcaption>سورة القلم، الآية <bdi dir="ltr">1</bdi></figcaption>
-      <p class="why"><b>لماذا في أول الديوان؟</b> أقسم الله بالقلم وبما يُكتب به — فالكلمة أمانة. وأنت تكتب هنا بقلمين: قلم الحبر في أبيات هذا الديوان، وقلم الضوء في صورك. وكلاهما شهادة: لا تكتب إلا ما شعرت به، ولا تنشر صورة إلا كما كانت.</p>
-    </figure>
+    <div class="sec-head rv"><div><div class="sec-k">قصيدة الأسابيع</div><h2>بيتٌ واحد كل أسبوع</h2><p class="sec-sub">في نهاية كل أسبوع تكتب بيتًا أو سطرًا واحدًا بقلمك: شيئًا رأيته، أو تعلّمته، أو تجاوزته. وبجانب كل بيت ختمٌ يقول ما حدث في ذلك الأسبوع.</p></div></div>
+    <div class="legend rv"><span class="lg"><i class="ok">تمّ</i><span><b>تمّ</b> — أنهيتَ مهام الأسبوع في وقتها</span></span><span class="lg"><i class="ex">✓</i><span><b>محفوظ</b> — أسبوع امتحانات حقّقتَ فيه ساعات دراستك</span></span><span class="lg"><i class="ms"></i><span><b>سقط البيت</b> — مضى الأسبوع ومهامه ناقصة، والحبر لا يُمحى</span></span></div>
     <div class="poem rv" id="poem"></div>
     <div class="verse-form hidden" id="vForm"></div>
     <div class="poem-foot">
@@ -198,16 +207,16 @@
 <footer class="foot">
   <div class="wrap foot-in">
     <img src="assets/logo-cyan.png" alt="ممكن" width="102" height="34">
-    <span>وحدة التصوير · المركز الإعلامي — منظمة ممكن للتوعية والإعلام · 2026</span>
+    <span>وحدة التصوير · المركز الإعلامي — منظمة ممكن للتوعية والإعلام · 2026 · <a href="guide.html">كيف أستخدم الديوان؟</a></span>
   </div>
 </footer>
 
 <div id="toasts" aria-live="polite"></div>
 <canvas id="confetti" aria-hidden="true"></canvas>
 
-<script src="content.js?v=11"></script>
-<script src="theme.js?v=11"></script>
-<script src="shelf.js?v=4"></script>
-<script src="engine.js?v=11"></script>
+<script src="content.js?v=12"></script>
+<script src="theme.js?v=12"></script>
+<script src="shelf.js?v=5"></script>
+<script src="engine.js?v=12"></script>
 </body>
 </html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F3EBD8">
+<title>كيف أستخدم الديوان؟ — عبد الرحمن · وحدة التصوير — ممكن</title>
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="base.css?v=12">
+<link rel="stylesheet" href="app.css?v=12">
+<style>
+.g-hero{padding:34px 0 20px}
+.g-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.g-back{font-weight:700;font-size:15px;color:var(--accent);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.g-back:hover{text-decoration:underline}
+.g-title{margin:26px 0 6px;font-size:clamp(30px,4vw,44px);font-weight:900;color:var(--ink);line-height:1.3}
+.g-title span{font-family:'Aref Ruqaa','Dahab',serif;color:var(--accent);font-weight:700}
+.g-lead{font-size:17px;color:var(--body);max-width:680px;line-height:1.9;margin:0}
+.g-map{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:22px 0 6px}
+.g-map a{display:flex;flex-direction:column;gap:2px;background:var(--surface);border-radius:12px;padding:12px 14px;text-decoration:none;color:var(--body);box-shadow:0 4px 12px rgba(60,40,15,.06);font-size:13.5px;transition:transform .2s}
+.g-map a:hover{transform:translateY(-3px)}
+.g-map b{color:var(--ink);font-size:15px}
+.g-map i{font-style:normal;color:var(--accent);font-weight:800;font-size:12px}
+.g-part{margin:34px 0 10px;display:flex;align-items:center;gap:12px}
+.g-part span{width:34px;height:34px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:800}
+.g-part h2{margin:0;font-size:24px;font-weight:800;color:var(--ink)}
+.steps{display:grid;gap:14px}
+.step{display:grid;grid-template-columns:54px 1fr minmax(0,300px);gap:18px;align-items:center;background:var(--paper) var(--grain);border-radius:14px;padding:18px 20px;box-shadow:var(--shadow);position:relative}
+.step::before{content:'';position:absolute;inset:7px;border:1px solid rgba(176,138,62,.3);border-radius:9px;pointer-events:none}
+.sn{width:46px;height:46px;border-radius:12px;background:#1E1A16;color:#F3EBD8;display:grid;place-items:center;font-weight:900;font-size:20px}
+.step h3{margin:0 0 4px;font-size:18px;font-weight:800;color:var(--ink)}
+.step p{margin:0;font-size:15px;line-height:1.85;color:var(--body)}
+.step p b{color:var(--accent)}
+.mock{background:#fff;border-radius:12px;padding:14px;box-shadow:inset 0 0 0 1px var(--line);display:flex;flex-direction:column;gap:8px;align-items:center;justify-content:center;min-height:96px;font-size:13px;color:var(--muted)}
+.mock .row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;align-items:center}
+.mb{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:7px 14px;font-weight:700;font-size:13px;background:var(--accent);color:#fff;white-space:nowrap}
+.mb.gh{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line2)}
+.mb.dk{background:#1E1A16}
+.mf{width:100%;border:1.5px dashed var(--line2);border-radius:8px;padding:7px 10px;text-align:start;font-size:12.5px;color:#9a8c76;background:var(--paper)}
+.mk{display:inline-flex;width:18px;height:18px;border-radius:5px;border:2px solid var(--line2)}
+.mk.on{background:#3E7A55;border-color:#3E7A55}
+.tag{display:inline-block;border-radius:999px;padding:3px 10px;font-size:12px;font-weight:700}
+.tag.wait{background:#FFF3D6;color:#8A6410}.tag.ok{background:#E5F2EA;color:#2F6B47}
+.stamp{width:54px;height:54px;border-radius:50%;border:3px solid var(--accent);color:var(--accent);display:grid;place-items:center;font-weight:900;transform:rotate(-12deg);font-size:15px}
+.stamp.b{border-color:var(--accent2);color:var(--accent2);font-size:12px}
+.strk{position:relative;color:#9c8f7c;font-size:14px}
+.strk::after{content:'';position:absolute;left:-4px;right:-4px;top:55%;height:3px;background:var(--accent);border-radius:3px;transform:rotate(-3deg)}
+.arrow{color:var(--accent);font-weight:900}
+.tips{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.tip{background:var(--surface);border-radius:12px;padding:16px;box-shadow:0 4px 12px rgba(60,40,15,.06)}
+.tip b{display:block;color:var(--ink);font-size:16px;margin-bottom:4px}
+.tip p{margin:0;font-size:14.5px;line-height:1.8;color:var(--body)}
+.g-end{text-align:center;margin:40px 0 10px}
+@media (max-width:900px){ .g-map{grid-template-columns:repeat(2,1fr)} .tips{grid-template-columns:1fr} }
+@media (max-width:720px){ .step{grid-template-columns:44px 1fr} .step .mock{grid-column:1 / -1} .sn{width:40px;height:40px;font-size:17px} }
+</style>
+</head>
+<body>
+<header class="g-hero">
+  <div class="wrap">
+    <div class="g-top">
+      <a class="g-back" href="./">→ العودة إلى الديوان</a>
+      <img class="logo" src="assets/logo-cyan.png" alt="ممكن" width="132" height="44">
+    </div>
+    <h1 class="g-title">كيف أستخدم <span>الديوان</span>؟</h1>
+    <p class="g-lead">دليل قصير في <bdi dir="ltr">4</bdi> أجزاء: الإعداد مرة واحدة، ثم ما تفعله كل أسبوع، ثم معنى الأختام، ثم نصائح تجعل الديوان يعمل لصالحك. يكفيك منه <bdi dir="ltr">10</bdi> دقائق في الأسبوع.</p>
+    <nav class="g-map">
+      <a href="#p1"><i>الجزء 1</i><b>الإعداد</b>مرة واحدة فقط</a>
+      <a href="#p2"><i>الجزء 2</i><b>كل أسبوع</b>المهام والدراسة والبيت</a>
+      <a href="#p3"><i>الجزء 3</i><b>الأختام</b>ماذا تعني «تمّ» و«محفوظ»</a>
+      <a href="#p4"><i>الجزء 4</i><b>نصائح</b>لتستفيد أكثر</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="g-part" id="p1"><span>1</span><h2>الإعداد — مرة واحدة فقط</h2></div>
+  <div class="steps">
+    <div class="step"><div class="sn">1</div><div><h3>افتح الرابط واختر «أنا عبد الرحمن»</h3><p>أول مرة تفتح فيها الديوان على أي جهاز سيسألك: من يفتح الديوان؟ اختر اسمك. الاختيار يُحفظ على هذا الجهاز فقط، ويمكنك تغييره من زر <b>«تبديل»</b> في الشريط العلوي.</p></div>
+      <div class="mock"><span>من يفتح الديوان؟</span><div class="row"><span class="mb">أنا عبد الرحمن</span><span class="mb gh">أنا المشرف</span></div></div></div>
+    <div class="step"><div class="sn">2</div><div><h3>اربط الحفظ لتصل بياناتك إلى المشرف</h3><p>اضغط <b>«إعدادات الحفظ»</b> في الشريط العلوي، والصق البيانات الثلاث التي تصلك في البريد: <b>Gist ID</b> و<b>Token</b> و<b>اسم الملف</b>، ثم <b>«حفظ وربط»</b>. بعدها يُحفظ كل ما تفعله تلقائيًا، ويظهر لك «متزامن».</p></div>
+      <div class="mock"><div class="mf">Gist ID</div><div class="mf">Token</div><span class="mb">حفظ وربط</span></div></div>
+    <div class="step"><div class="sn">3</div><div><h3>أضف موادّك ومواعيد امتحاناتك</h3><p>في قسم <b>«دراستي أولًا»</b> اكتب اسم كل مادة وتاريخ امتحانها ثم <b>«إضافة»</b>. أسبوع الامتحان يتحوّل تلقائيًا إلى «أسبوع دراسة أولًا» حتى لا تُحاسَب على مهام لا وقت لها.</p></div>
+      <div class="mock"><div class="row"><div class="mf" style="width:110px">اسم المادة</div><div class="mf" style="width:90px">dd/mm</div><span class="mb">إضافة</span></div></div></div>
+    <div class="step"><div class="sn">4</div><div><h3>اكتب عهدك</h3><p>في <b>«عهدي»</b> تختار أنت ما ستخسره إن سقط بيتان: صدقة تحدّد مبلغها، أو شيء تحبّه تتركه أسبوعًا. لا أحد يفرضه عليك — هو عهدك مع نفسك.</p></div>
+      <div class="mock"><div class="mf">إذا سقط بيتان، أتصدّق بـ…</div><span class="mb">حفظ العهد</span></div></div>
+  </div>
+
+  <div class="g-part" id="p2"><span>2</span><h2>كل أسبوع — نحو <bdi dir="ltr">10</bdi> دقائق</h2></div>
+  <div class="steps">
+    <div class="step"><div class="sn">1</div><div><h3>يوم الأحد: افتح «ما يُكتب هذا الأسبوع»</h3><p>هنا مهام الأسبوع الحالي فقط، وتحتها ما تأخّر من الأسابيع الماضية. اقرأها كلها أولًا، ورتّبها في أيامك كما تحب — الترتيب داخل الأسبوع لك.</p></div>
+      <div class="mock"><div class="row"><span class="mb dk">WEEK 3</span><span>المهام · <bdi dir="ltr">22/11 — 28/11</bdi></span></div></div></div>
+    <div class="step"><div class="sn">2</div><div><h3>أنهِ المهمة، ثم اضغط «أنجزتُها»</h3><p>بعد أن تنهي المهمة فعلًا اضغط <b>«أنجزتُها»</b>، وأرفق رابط عملك إن كانت تمرينًا أو صورًا. تصبح المهمة <b>«بانتظار المراجعة»</b> حتى يعتمدها المشرف، فتصير <b>«معتمدة»</b>.</p></div>
+      <div class="mock"><div class="row"><span class="mb">أنجزتُها</span><span class="arrow">←</span><span class="tag wait">بانتظار المراجعة</span><span class="arrow">←</span><span class="tag ok">معتمد</span></div></div></div>
+    <div class="step"><div class="sn">3</div><div><h3>سجّل ساعات دراستك</h3><p>كل ما تدرس ساعة اضغط <b>«+1 ساعة»</b> في «دراستي أولًا». هدفك الأسبوعي ظاهر أمامك، والدراسة ربع تقدّمك الكامل.</p></div>
+      <div class="mock"><div class="row"><span class="mb gh">−1</span><span class="mb">+1 ساعة</span><span class="mb gh">+2</span></div><span><bdi dir="ltr">6 / 10</bdi> ساعات هذا الأسبوع</span></div></div>
+    <div class="step"><div class="sn">4</div><div><h3>ضع علامة على عادات الأسبوع</h3><p>أربع عادات صغيرة: الرياضة، والإنجليزية، وتسويق نفسك، وبيت الأسبوع. ضع العلامة حين تتمّها — لا تتركها لآخر يوم.</p></div>
+      <div class="mock"><div class="row"><span class="mk on"></span>لجسدك عليك حق <span class="mk"></span>الإنجليزية</div></div></div>
+    <div class="step"><div class="sn">5</div><div><h3>آخر الأسبوع: اكتب بيتك</h3><p>في «قصيدة الأسابيع» اكتب بيتًا أو سطرًا واحدًا عمّا رأيت أو تعلّمت هذا الأسبوع، ثم <b>«اكتب البيت في الديوان»</b>. ليس شرطًا أن يكون موزونًا؛ المهم أن يكون صادقًا. المشرف يقرأ الديوان أيضًا.</p></div>
+      <div class="mock"><div class="mf">الشطر الأول — أو سطرك كاملًا</div><span class="mb">اكتب البيت في الديوان</span></div></div>
+  </div>
+
+  <div class="g-part" id="p3"><span>3</span><h2>الأختام — ماذا تعني؟</h2></div>
+  <div class="steps">
+    <div class="step"><div class="sn">✓</div><div><h3>«تمّ» بالأحمر</h3><p>أنهيتَ كل مهام الأسبوع في وقتها. كل ختم متتالٍ يرفع عدّاد <b>«أسابيع متتالية في وقتها»</b>.</p></div><div class="mock"><span class="stamp">تمّ</span></div></div>
+    <div class="step"><div class="sn">✓</div><div><h3>«محفوظ» بالأزرق</h3><p>أسبوع امتحانات حقّقتَ فيه هدف ساعات الدراسة. الأسبوع محفوظ ولا يُحسب عليك.</p></div><div class="mock"><span class="stamp b">محفوظ</span></div></div>
+    <div class="step"><div class="sn">✗</div><div><h3>«سقط البيت»</h3><p>مضى الأسبوع ومهامه ناقصة، فيُشطب بيته بخط أحمر — والحبر لا يُمحى. إذا سقط بيتان حان وقت الوفاء بعهدك، ثم تبدأ صفحة جديدة بلا جلد للذات. المهام المتأخرة تبقى أمامك حتى تنجزها.</p></div><div class="mock"><span class="strk">بيت الأسبوع الثاني</span></div></div>
+  </div>
+
+  <div class="g-part" id="p4"><span>4</span><h2>نصائح لتستفيد أكثر</h2></div>
+  <div class="tips">
+    <div class="tip"><b>موعد ثابت</b><p>اختر وقتًا ثابتًا كل أحد لتفتح الديوان وتخطّط أسبوعك، ووقتًا كل خميس لتكتب بيتك.</p></div>
+    <div class="tip"><b>من الهاتف أيضًا</b><p>افتح الرابط على هاتفك واربط الحفظ بالبيانات نفسها؛ ستجد تقدّمك نفسه على الجهازين.</p></div>
+    <div class="tip"><b>«مزامنة الآن»</b><p>إن عدّلتَ من جهازين، اضغط «مزامنة الآن» قبل أن تبدأ، ليصلك آخر ما حفظته.</p></div>
+    <div class="tip"><b>رفّ الكتب</b><p>مرّر المؤشر على أي كتاب لترى عنه نبذة، واضغطه ليفتح الـ PDF. كل كتاب مربوط بفصل من فصولك.</p></div>
+    <div class="tip"><b>القنوات والفيديوهات</b><p>في آخر الصفحة قنوات عربية وإنجليزية للإلهام والتصوير والمونتاج — شاهدها بعين المحلّل لا المتفرّج.</p></div>
+    <div class="tip"><b>إن تأخّرت</b><p>لا بأس. المهام المتأخرة لا تختفي؛ أنجزها أولًا ثم أكمل أسبوعك. الأهم ألّا يتأخر أسبوعان متتاليان.</p></div>
+  </div>
+  <div class="g-end"><a class="btn btn-main" href="./">ابدأ الآن — افتح الديوان</a></div>
+</main>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <img src="assets/logo-cyan.png" alt="ممكن" width="102" height="34">
+    <span>وحدة التصوير · المركز الإعلامي — منظمة ممكن للتوعية والإعلام · <bdi dir="ltr">2026</bdi></span>
+  </div>
+</footer>
+</body>
+</html>
