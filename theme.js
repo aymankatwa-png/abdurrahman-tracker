@@ -1,7 +1,7 @@
 /* ============================================================
-   دار عبد الرحمن — the look and the tools
-   (carved door, zellige that blooms, lanterns, arcade of weeks,
-    eight goal tiles, his own pledge, the weekly dialogue)
+   طاولة المحرّر — the look and the tools
+   (light table, real contact sheet + loupe, grease-pencil marks,
+    test strips for his goals, the roll of weeks, backs of prints)
    ============================================================ */
 (function () {
 'use strict';
@@ -9,114 +9,91 @@ var T = window.TRACKER;
 var A = null;
 var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 var $ = function (s) { return document.querySelector(s); };
-var plDirty = false, tkDirty = false;
+var plDirty = false, tkDirty = false, flipped = {};
+var FR = function (k) { return 'assets/lt/f' + (((k - 1) % 12) + 1) + '.webp'; };
 function curWeek(C) { return Math.min(Math.max(C.week, 1), T.weeks); }
 function setText(id, v) { var n = document.getElementById(id); if (n) n.textContent = v; }
-var LANT = '<svg class="lantern" viewBox="0 0 80 210" aria-hidden="true"><line x1="40" y1="0" x2="40" y2="38" stroke="#9c7a33" stroke-width="2"/><circle cx="40" cy="40" r="4" fill="none" stroke="#b8913c" stroke-width="2"/><path d="M27 44h26l-4 12H31z" fill="#b8913c"/><path class="glass" d="M21 56h38l7 30-7 50H21l-7-50z"/><g stroke="#8a6a2a" stroke-width="2.2" fill="none"><path d="M21 56l7 30-7 50M59 56l-7 30 7 50M40 56v80M14 86h52"/><path d="M40 62l8 12-8 12-8-12z M40 98l8 12-8 12-8-12z"/></g><path d="M21 136h38l-9 16H30z" fill="#b8913c"/><path d="M34 152h12l-6 14z" fill="#9c7a33"/></svg>';
-var STAR = 'M50 2 L61.5 22.3 L84 16 L77.7 38.5 L98 50 L77.7 61.5 L84 84 L61.5 77.7 L50 98 L38.5 77.7 L16 84 L22.3 61.5 L2 50 L22.3 38.5 L16 16 L38.5 22.3Z';
 
-/* ---------------- the carved door opens ---------------- */
-function door() {
-  var d = $('#door'), hero = $('#hero');
-  var live = function () { hero.classList.add('live'); };
-  if (!d) { live(); return; }
-  if (reduce) { d.classList.add('gone'); live(); return; }
-  var opened = false;
-  function open() { if (opened) return; opened = true; d.classList.add('open'); setTimeout(live, 700); setTimeout(function () { d.classList.add('gone'); }, 2000); }
-  d.addEventListener('click', open);
-  setTimeout(open, 700);
+/* ---------------- the table lights up ---------------- */
+function lightUp() {
+  var h = $('#hero'), img = $('#sheetImg');
+  var go = function () { setTimeout(function () { h.classList.add('live'); }, reduce ? 0 : 250); };
+  if (img && !img.complete) img.addEventListener('load', go); else go();
+  setTimeout(function () { h.classList.add('live'); }, 2500);
+  /* a finished task = a shutter blink */
+  document.addEventListener('click', function (e) { var b = e.target.closest('[data-task][data-to="pending"]'); if (b && A.isMe()) { var k = $('#blink'); k.classList.remove('go'); void k.offsetWidth; k.classList.add('go'); } });
 }
 
-/* ---------------- zellige that blooms from the centre + light that follows the hand ---------------- */
-function geo() {
-  var c = $('#geo'), hero = $('#hero'); if (!c) return;
-  var x = c.getContext('2d'), W, H, dpr = Math.min(2, window.devicePixelRatio || 1), dim, bright, mask, mk, mx = .7, my = .3, tx = .7, ty = .3, t0 = 0, on = true, hand = false;
-  function pattern(col, a, lw) {
-    var cv = document.createElement('canvas'); cv.width = W * dpr; cv.height = H * dpr;
-    var g = cv.getContext('2d'); g.setTransform(dpr, 0, 0, dpr, 0, 0); g.strokeStyle = col; g.globalAlpha = a; g.lineWidth = lw;
-    var S = W < 700 ? 86 : 118, R = S * .4, r2 = S * .17;
-    for (var i = -1; i <= W / S + 1; i++) for (var j = -1; j <= H / S + 1; j++) {
-      var cx = i * S, cy = j * S;
-      g.beginPath();
-      for (var k = 0; k < 16; k++) { var ang = k * Math.PI / 8 - Math.PI / 2, rr = k % 2 ? R * .62 : R; g[k ? 'lineTo' : 'moveTo'](cx + rr * Math.cos(ang), cy + rr * Math.sin(ang)); }
-      g.closePath(); g.stroke();
-      g.beginPath(); g.arc(cx, cy, R * .3, 0, 6.283); g.stroke();
-      g.beginPath(); g.moveTo(cx + R, cy); g.lineTo(cx + S - R, cy); g.moveTo(cx, cy + R); g.lineTo(cx, cy + S - R); g.stroke();
-      var ox = cx + S / 2, oy = cy + S / 2; g.beginPath();
-      for (var m = 0; m < 8; m++) { var an = m * Math.PI / 4; g[m ? 'lineTo' : 'moveTo'](ox + r2 * Math.cos(an), oy + r2 * Math.sin(an)); }
-      g.closePath(); g.stroke();
-    }
-    return cv;
+/* ---------------- the loupe ---------------- */
+function loupe() {
+  var sh = $('#sheet'), lp = $('#loupe'), img = $('#sheetImg'); if (!sh || !lp) return;
+  var Z = 2.6, auto = null, autoT = 0;
+  lp.style.backgroundImage = 'url(' + img.getAttribute('src') + ')';
+  function place(x, y) {
+    var w = sh.clientWidth, h = sh.clientHeight;
+    lp.style.left = x + 'px'; lp.style.top = y + 'px';
+    lp.style.backgroundSize = (w * Z) + 'px ' + (h * Z) + 'px';
+    var r = lp.clientWidth / 2;
+    lp.style.backgroundPosition = (-(x * Z - r)) + 'px ' + (-(y * Z - r)) + 'px';
   }
-  function size() {
-    W = c.clientWidth; H = c.clientHeight; c.width = W * dpr; c.height = H * dpr;
-    dim = pattern('#D4AF37', .16, 1.1); bright = pattern('#FFE7A0', .9, 1.4);
-    mask = document.createElement('canvas'); mask.width = W * dpr; mask.height = H * dpr; mk = mask.getContext('2d');
+  function local(e) {
+    /* the sheet is rotated a little: undo it so the loupe shows what is really under the finger */
+    var rect = sh.getBoundingClientRect(), cx = rect.left + rect.width / 2, cy = rect.top + rect.height / 2;
+    var a = -1.4 * Math.PI / 180, dx = e.clientX - cx, dy = e.clientY - cy;
+    return { x: sh.clientWidth / 2 + dx * Math.cos(a) - dy * Math.sin(a), y: sh.clientHeight / 2 + dx * Math.sin(a) + dy * Math.cos(a) };
   }
-  function draw(t) {
-    if (!t0) t0 = t;
-    var age = (t - t0) / 1000, bloom = reduce ? 1 : Math.min(1, Math.max(0, (age - .6) / 2.6)), maxR = Math.hypot(W, H);
-    if (!hand) { tx = .5 + .32 * Math.cos(age * .25); ty = .4 + .2 * Math.sin(age * .33); }
-    mx += (tx - mx) * .06; my += (ty - my) * .06;
-    x.setTransform(1, 0, 0, 1, 0, 0); x.clearRect(0, 0, c.width, c.height);
-    x.save(); x.beginPath(); x.arc(W * .5 * dpr, H * .45 * dpr, maxR * dpr * (bloom * bloom * (3 - 2 * bloom)), 0, 6.283); x.clip();
-    x.drawImage(dim, 0, 0);
-    mk.globalCompositeOperation = 'source-over'; mk.clearRect(0, 0, mask.width, mask.height);
-    var gr = mk.createRadialGradient(mx * W * dpr, my * H * dpr, 0, mx * W * dpr, my * H * dpr, 260 * dpr);
-    gr.addColorStop(0, 'rgba(0,0,0,.95)'); gr.addColorStop(1, 'rgba(0,0,0,0)');
-    mk.fillStyle = gr; mk.fillRect(0, 0, mask.width, mask.height);
-    mk.globalCompositeOperation = 'source-in'; mk.drawImage(bright, 0, 0);
-    x.drawImage(mask, 0, 0);
-    x.restore();
+  sh.addEventListener('pointermove', function (e) { stopAuto(); var p = local(e); place(p.x, p.y); lp.classList.add('on'); });
+  sh.addEventListener('pointerdown', function (e) { stopAuto(); var p = local(e); place(p.x, p.y); lp.classList.add('on'); });
+  sh.addEventListener('pointerleave', function () { lp.classList.remove('on'); startAuto(3000); });
+  function stopAuto() { cancelAnimationFrame(auto); auto = null; clearTimeout(autoT); }
+  function startAuto(delay) {
+    if (reduce) return; clearTimeout(autoT);
+    autoT = setTimeout(function () {
+      var t0 = performance.now();
+      (function step(t) {
+        var k = (t - t0) / 1000, w = sh.clientWidth, h = sh.clientHeight;
+        /* drift across the chosen frame and its neighbours, the way an editor scans */
+        var x = w * (.5 + .38 * (.5 + .5 * Math.sin(k * .5))), y = h * (.5 + .3 * Math.sin(k * .37));
+        place(x, y); lp.classList.add('on');
+        if (k < 7) auto = requestAnimationFrame(step); else { lp.classList.remove('on'); startAuto(4000); }
+      })(t0);
+    }, delay);
   }
-  function loop(t) { if (on) draw(t); requestAnimationFrame(loop); }
-  size(); addEventListener('resize', size);
-  hero.addEventListener('pointermove', function (e) { var r = hero.getBoundingClientRect(); hand = true; tx = (e.clientX - r.left) / r.width; ty = (e.clientY - r.top) / r.height; });
-  hero.addEventListener('pointerleave', function () { hand = false; });
-  if ('IntersectionObserver' in window) new IntersectionObserver(function (en) { on = en[0].isIntersecting; }).observe(c);
-  if (reduce) draw(1); else requestAnimationFrame(loop);
-  /* the lanterns lean a little toward the hand */
-  addEventListener('pointermove', function (e) { var a = $('.lamp-a'); if (a && !reduce) a.style.marginTop = ((e.clientY / innerHeight - .5) * 6).toFixed(1) + 'px'; });
-  /* every task he finishes lights a lamp */
-  document.addEventListener('click', function (e) {
-    var b = e.target.closest('[data-task][data-to="pending"]'); if (!b || !A.isMe()) return;
-    var g = $('#glowBurst'); if (!g) return; g.style.setProperty('--gx', e.clientX + 'px'); g.style.setProperty('--gy', e.clientY + 'px');
-    g.classList.remove('go'); void g.offsetWidth; g.classList.add('go');
-  });
+  startAuto(6500);
 }
 
-/* ---------------- progress rosette (eight petals) ---------------- */
-function rosetteInit() {
-  var el = $('#rosette'); if (!el) return;
-  var petals = '';
-  for (var i = 0; i < 8; i++) petals += '<path class="petal" d="M50 50 L44 18 L50 4 L56 18Z" transform="rotate(' + (i * 45) + ' 50 50)"/>';
-  el.innerHTML = '<svg viewBox="0 0 100 100">' + petals + '<circle cx="50" cy="50" r="9" fill="#0A1325" stroke="#D4AF37" stroke-width="1.5"/></svg><div class="ros-t"><b class="en" id="rosPct">0%</b><span>من المسار — بتلةٌ لكل ثُمن</span></div>';
-}
-function paintRosette(C) {
-  var ps = document.querySelectorAll('#rosette .petal'), f = C.pct / 12.5;
-  ps.forEach(function (p, i) { p.classList.toggle('on', i < Math.floor(f)); p.classList.toggle('half', i === Math.floor(f) && f % 1 >= .4); });
-  setText('rosPct', C.pct + '%');
+/* ---------------- frame counter ---------------- */
+function paintCounter(C) {
+  var n = Math.round(C.pct * 36 / 100);
+  setText('cWin', (n < 10 ? '0' : '') + n);
+  var b = $('#cBar'); if (b) b.style.width = C.pct + '%';
 }
 
-/* ---------------- arcade of weeks: a lantern under every arch ---------------- */
-var LBL = { future: 'لم يُضأ بعد', now: 'يُضاء الآن', ok: 'مضاء', exam: 'مضاء · امتحانات', late: 'أُضيء متأخرًا', missed: 'انطفأ' };
+/* ---------------- the roll of weeks with grease-pencil marks ---------------- */
+var LBL = { future: '', now: 'يُصوَّر الآن', ok: 'مُختار', exam: 'محفوظ · امتحانات', late: 'متأخر', missed: 'مشطوب' };
 function counts(C) {
   var o = { dev: 0, burn: 0, left: 0 };
   C.weeksInfo.forEach(function (w) { if (w.state === 'missed') o.burn++; else if (w.state === 'future' || w.state === 'now') o.left++; else o.dev++; });
   return o;
 }
-var ARCH = '<svg class="archB" viewBox="0 0 100 150"><path class="in" d="M14 150 V70 C14 70 6 58 6 44 A44 44 0 1 1 94 44 C94 58 86 70 86 70 V150Z"/><path class="fr" d="M14 150 V70 C14 70 6 58 6 44 A44 44 0 1 1 94 44 C94 58 86 70 86 70 V150"/></svg>';
-function paintArcade(C) {
-  var el = $('#arcade'); if (!el) return;
+function mark(state) {
+  if (state === 'ok') return '<svg viewBox="0 0 100 100"><path class="mk" stroke="#ff3b52" d="M50 8 C 82 6, 96 30, 92 56 C 88 84, 60 96, 36 90 C 12 84, 4 58, 10 36 C 16 16, 36 8, 58 10"/></svg>';
+  if (state === 'exam') return '<svg viewBox="0 0 100 100"><path class="mk" stroke="#5b8cff" d="M50 8 C 82 6, 96 30, 92 56 C 88 84, 60 96, 36 90 C 12 84, 4 58, 10 36 C 16 16, 36 8, 58 10"/></svg>';
+  if (state === 'missed') return '<svg viewBox="0 0 100 100"><path class="mk" stroke="#ff3b52" stroke-width="9" d="M16 18 L86 84 M84 16 L18 86"/></svg>';
+  if (state === 'late') return '<svg viewBox="0 0 100 100"><path class="mk" stroke="#F2C230" d="M14 92 C 40 88, 62 90, 88 86 M18 98 C 44 95, 66 97, 84 94"/></svg>';
+  return '';
+}
+function paintRoll(C) {
+  var el = $('#rollStrip'); if (!el) return;
   el.innerHTML = C.weeksInfo.map(function (w) {
-    return '<div class="bay ' + w.state + '">' + ARCH + LANT + (w.state === 'missed' ? '<i class="smoke"></i>' : '') +
-      '<span class="bay-n">' + w.w + '</span><span class="bay-l">' + LBL[w.state] + '</span><span class="bay-d">' + A.fmtShort(A.weekStart(w.w)) + ' – ' + A.fmtShort(A.weekEnd(w.w)) + '</span></div>';
+    return '<div class="wf ' + w.state + '" title="الأسبوع ' + w.w + '"><i class="wf-img" style="background-image:url(' + FR(w.w) + ')"></i>' + mark(w.state) +
+      '<span class="wf-l">' + (LBL[w.state] || '') + '</span><span class="wf-n">' + w.w + ' · ' + A.fmtShort(A.weekStart(w.w)) + '</span></div>';
   }).join('');
   var n = counts(C);
-  $('#arcStats').innerHTML = '<div class="ss"><b>' + n.dev + '</b>قناديل مضاءة</div><div class="ss burn"><b>' + n.burn + '</b>انطفأ</div><div class="ss"><b>' + n.left + '</b>باقية أمامك</div><div class="ss"><b>' + C.streak + '</b>أسابيع متتالية في وقتها</div>';
+  $('#rollStats').innerHTML = '<div class="ss"><b>' + n.dev + '</b>إطارات مُختارة</div><div class="ss burn"><b>' + n.burn + '</b>مشطوبة</div><div class="ss"><b>' + n.left + '</b>باقية في البكرة</div><div class="ss"><b>' + C.streak + '</b>أسابيع متتالية في وقتها</div>';
 }
 
-/* ---------------- eight goal tiles ---------------- */
+/* ---------------- test strips for his eight goals ---------------- */
 function frac(ids) { var d = 0; ids.forEach(function (id) { var t = A.ALL.filter(function (x) { return x.id === id; })[0]; if (t && A.stat(t) === 'done') d++; }); return ids.length ? d / ids.length : 0; }
 function checkWeeks(id, C) { var n = 0; for (var k = 1; k <= C.studyWeeksSoFar; k++) if (A.get('c:' + k + ':' + id, false)) n++; return n; }
 function goals(C) {
@@ -124,25 +101,28 @@ function goals(C) {
   var en = checkWeeks('en', C), sp = checkWeeks('sport', C), mk = checkWeeks('market', C);
   return [
     { ico: '📚', t: 'التركيز على دراستي', d: 'ساعات أسبوعية تحسبها هنا، وأسبوع الامتحان يُحفظ إطاره.', p: C.studyWeeksMet / so, st: A.hours(w) + ' / ' + A.studyGoal() + ' ساعة', go: '#studiesSec', g: '#2E8B7A' },
-    { ico: '🎬', t: 'تعلّم DaVinci Resolve', d: 'التدريب الرسمي، ثم مونتاج 60 ثانية، ثم عرض المقال المصوّر.', p: frac(['c4', 'c6', 'd5']), st: 'القوس الثالث', go: 'C3', g: '#C8674F' },
+    { ico: '🎬', t: 'تعلّم DaVinci Resolve', d: 'التدريب الرسمي، ثم مونتاج 60 ثانية، ثم عرض المقال المصوّر.', p: frac(['c4', 'c6', 'd5']), st: 'البكرة الثالثة', go: 'C3', g: '#C8674F' },
     { ico: '🗣', t: 'تحسين لغتي الإنجليزية', d: '3 جلسات أسبوعيًا، ودروس إنجليزية، وتعليقات صورك بالإنجليزية.', p: en / so, st: en + ' من ' + so + ' أسابيع', go: '#checks', g: '#3F6FB8' },
-    { ico: '📷', t: 'العودة لمحتوى هادف', d: 'صورة تعرف لماذا وُجدت — حتى المقال المصوّر في النهاية.', p: (chPct('C1') + chPct('C2') + chPct('C4')) / 3, st: 'الأقواس 1 و2 و4', go: 'C4', g: '#D4AF37' },
+    { ico: '📷', t: 'العودة لمحتوى هادف', d: 'صورة تعرف لماذا وُجدت — حتى المقال المصوّر في النهاية.', p: (chPct('C1') + chPct('C2') + chPct('C4')) / 3, st: 'البكرات 1 و2 و4', go: 'C4', g: '#D4AF37' },
     { ico: '📣', t: 'تسويق نفسي', d: 'صفحة أعمال ونبذة بالعربية والإنجليزية، ونشر أسبوعي.', p: frac(['d6', 'd9']) * .6 + (mk / so) * .4, st: mk + ' أسابيع نشر', go: 'C4', g: '#7B5EA7' },
     { ico: '💪', t: 'لجسدك عليك حق', d: '«إنّ لجسدك عليك حقًّا» — كما كتبتَ. رياضة مرتين كل أسبوع.', p: sp / so, st: sp + ' من ' + so + ' أسابيع', go: '#checks', g: '#3FA796' },
-    { ico: '💼', t: 'دخل أفضل — بلا ضغط عمل', d: 'العمل مع العملاء وصفحة الأعمال: أول خطوة نحو دخل من عمل تحبّه.', p: frac(['d9', 'd6']), st: 'القوس الرابع', go: 'C4', g: '#B8865B' },
+    { ico: '💼', t: 'دخل أفضل — بلا ضغط عمل', d: 'العمل مع العملاء وصفحة الأعمال: أول خطوة نحو دخل من عمل تحبّه.', p: frac(['d9', 'd6']), st: 'البكرة الرابعة', go: 'C4', g: '#B8865B' },
     { ico: '🎓', t: 'تدريب المدرّبين TOT معتمد', d: 'هدف ما بعد هذا الموسم — نختار البرنامج المعتمد معًا في يناير.', p: C.allDone ? .3 : 0, st: 'يناير 2027', go: '#library', g: '#5C7FB0' }
   ];
 }
-function paintTiles(C) {
-  var el = $('#tiles'); if (!el) return;
+var STEPS = ['2s', '4s', '8s', '11s', '16s', '22s', '32s', '45s'];
+function paintStrips(C) {
+  var el = $('#strips'); if (!el) return;
+  var imgs = [1, 6, 8, 10, 12, 5, 2, 7];
   el.innerHTML = goals(C).map(function (g, i) {
-    var p = Math.max(0, Math.min(1, g.p)), y = (100 - p * 100).toFixed(1);
-    return '<a class="tile" href="' + (g.go.charAt(0) === '#' ? g.go : '#ch-' + g.go) + '" data-go="' + g.go + '">' +
-      '<div class="tile-star"><svg viewBox="0 0 100 100"><defs><clipPath id="tc' + i + '"><path d="' + STAR + '"/></clipPath></defs>' +
-      '<path d="' + STAR + '" fill="#0E1A31" stroke="#D4AF37" stroke-width="2"/>' +
-      '<g clip-path="url(#tc' + i + ')"><rect class="fillr" x="0" y="' + y + '" width="100" height="' + (p * 100).toFixed(1) + '" fill="' + g.g + '"/></g>' +
-      '<path d="' + STAR + '" fill="none" stroke="#F3D98A" stroke-width="1.2" transform="scale(.7) translate(21.4 21.4)" opacity=".7"/></svg><span class="ico">' + g.ico + '</span></div>' +
-      '<h4>' + A.esc(g.t) + '</h4><p>' + A.esc(g.d) + '</p><span class="st">' + A.esc(g.st) + '</span><div class="bar"><i style="width:' + Math.round(p * 100) + '%"></i></div><span class="where">' + (p >= 1 ? 'اكتملت البلاطة ✓' : 'افتح في المسار ←') + '</span></a>';
+    var p = Math.max(0, Math.min(1, g.p)), on = Math.round(p * 8), url = 'assets/lt/s' + imgs[i] + '.webp', bands = '';
+    for (var b = 0; b < 8; b++) {
+      var lit = [3, 4, 2, 5, 1, 6, 0, 7].indexOf(b) < on; /* the face (centre) appears first */
+      bands += '<span class="band ' + (lit ? 'on' : 'off') + '" style="background-image:url(' + url + ');background-size:800% 100%;background-position:' + (b / 7 * 100) + '% 50%' + (lit ? ';filter:grayscale(1) contrast(1.1) brightness(' + (1.32 - b * .055).toFixed(2) + ')' : '') + '"><b>' + STEPS[b] + '</b></span>';
+    }
+    return '<a class="strip-card" href="' + (g.go.charAt(0) === '#' ? g.go : '#ch-' + g.go) + '" data-go="' + g.go + '"><i class="tp"></i><div class="strip">' + bands + '</div>' +
+      '<div class="strip-meta"><span class="strip-ico">' + g.ico + '</span><div><h4>' + A.esc(g.t) + '</h4><p>' + A.esc(g.d) + '</p></div></div>' +
+      '<div class="strip-foot"><span class="st">' + A.esc(g.st) + '</span><span class="where">' + (p >= 1 ? 'ظهرت الصورة كاملة ✓' : 'افتح في المسار ←') + '</span></div></a>';
   }).join('');
   el.querySelectorAll('[data-go]').forEach(function (a) { var g = a.getAttribute('data-go'); if (g.charAt(0) !== '#') a.addEventListener('click', function (e) { e.preventDefault(); A.openChapter(g); }); });
 }
@@ -150,9 +130,9 @@ function paintTiles(C) {
 /* ---------------- pledge (he writes it, he keeps it) ---------------- */
 function plInit() {
   var el = $('#pledge'); if (!el) return;
-  el.innerHTML = '<h3>عهدي</h3><p>قلتَ إنك تعمل أفضل حين يكون هناك ما تخسره. فاختر بنفسك ما ستخسره إذا انطفأ قنديلان: صدقة تحدّد مبلغها، أو شيء تحبّه تتركه أسبوعًا. لا أحد يفرضه عليك.</p><div class="pl-verse">﴿وَأَوْفُوا بِالْعَهْدِ ۖ إِنَّ الْعَهْدَ كَانَ مَسْئُولًا﴾ <small style="font-family:Dahab;font-size:12px;color:var(--muted);font-weight:400">— الإسراء: 34</small></div><p>هذا عهدك مع نفسك، لا مع المشرف — ولهذا هو أثقل.</p>' +
+  el.innerHTML = '<h3>عهدي</h3><p>قلتَ إنك تعمل أفضل حين يكون هناك ما تخسره. فاختر بنفسك ما ستخسره إذا شُطب إطاران: صدقة تحدّد مبلغها، أو شيء تحبّه تتركه أسبوعًا. لا أحد يفرضه عليك.</p><p>هذا عهدك مع نفسك، لا مع المشرف — ولهذا هو أثقل.</p>' +
     '<div id="plAlert" class="pl-alert hidden"></div>' +
-    '<div id="plEdit" class="hidden"><textarea id="plIn" maxlength="300" placeholder="مثال: إذا انطفأ قنديلان، أتصدّق بـ… وأعوّض الأسبوع الضائع في عطلة نهاية الأسبوع."></textarea>' +
+    '<div id="plEdit" class="hidden"><textarea id="plIn" maxlength="300" placeholder="مثال: إذا شُطب إطاران، أتصدّق بـ… وأعوّض الأسبوع الضائع في عطلة نهاية الأسبوع."></textarea>' +
     '<div class="pl-row" style="margin-top:8px"><button class="btn btn-main btn-sm" id="plSave">حفظ العهد</button><button class="btn btn-ghost btn-sm hidden" id="plKept">وفيتُ بعهدي ✓</button></div></div>' +
     '<div id="plShow" class="pl-show hidden"></div>';
   var inp = $('#plIn');
@@ -177,25 +157,26 @@ function paintPledge(C) {
   show.textContent = v ? '«' + v + '»' : 'لم يُكتب العهد بعد.';
   if (me && !v) show.classList.add('hidden');
   var al = $('#plAlert'); al.classList.toggle('hidden', !due);
-  if (due) al.textContent = 'انطفأ قنديلان. حان وقت الوفاء بعهدك — ثم نبدأ صفحة جديدة، بلا جلد للذات.';
+  if (due) al.textContent = 'شُطب إطاران بالأحمر. حان وقت الوفاء بعهدك — ثم نبدأ بكرة جديدة، بلا جلد للذات.';
   $('#plKept').classList.toggle('hidden', !due);
 }
 
-/* ---------------- the weekly dialogue ---------------- */
+/* ---------------- the backs of the prints (his weekly notes) ---------------- */
 function tkInit() {
   var el = $('#talkCard'); if (!el) return;
-  el.innerHTML = '<div class="talk-list" id="tkList"></div><div class="talk-lock hidden" id="tkLock"></div>' +
-    '<div class="talk-form hidden" id="tkForm"><label for="tkIn" id="tkLbl">سطران لعبد الرحمن في ديسمبر</label>' +
-    '<textarea id="tkIn" maxlength="500" placeholder="هذا الأسبوع خفتُ من… لكنني… وتعلّمت أن…"></textarea><div><button class="btn btn-main btn-sm" id="tkSave">أرسل لنفسي</button></div></div>';
+  el.innerHTML = '<div class="prints" id="tkList"></div><div class="talk-lock hidden" id="tkLock"></div>' +
+    '<div class="talk-form hidden" id="tkForm"><label for="tkIn" id="tkLbl">اكتب خلف إطار هذا الأسبوع</label>' +
+    '<textarea id="tkIn" maxlength="400" placeholder="هذا الأسبوع خفتُ من… لكنني… وتعلّمت أن…"></textarea><div><button class="btn btn-main btn-sm" id="tkSave">اكتب خلف الصورة</button></div></div>';
   var inp = $('#tkIn');
   inp.addEventListener('input', function () { tkDirty = true; });
   $('#tkSave').addEventListener('click', function () {
-    var v = inp.value.trim().slice(0, 500); if (!v) { inp.focus(); return; }
-    var w = curWeek(A.computed()); tkDirty = false;
+    var v = inp.value.trim().slice(0, 400); if (!v) { inp.focus(); return; }
+    var w = curWeek(A.computed()); tkDirty = false; flipped[w] = true;
     A.burst($('#tkSave'), 20); A.set('talk:' + w, v);
     if (!A.get('c:' + w + ':talk', false)) A.set('c:' + w + ':talk', 1);
-    A.toast('وصلت رسالتك لعبد الرحمن في ديسمبر ✉');
+    A.toast('كُتبت خلف الصورة — لعبد الرحمن في ديسمبر ✉');
   });
+  $('#tkList').addEventListener('click', function (e) { var p = e.target.closest('[data-pr]'); if (!p) return; var k = p.getAttribute('data-pr'); flipped[k] = !flipped[k]; p.classList.toggle('flip', !!flipped[k]); });
 }
 function talkCount() { var n = 0; for (var k = 1; k <= T.weeks; k++) if (A.get('talk:' + k, '')) n++; return n; }
 function paintTalk(C) {
@@ -204,38 +185,38 @@ function paintTalk(C) {
   $('#tkForm').classList.toggle('hidden', !me);
   $('#tkList').classList.toggle('hidden', !me);
   var lock = $('#tkLock'); lock.classList.toggle('hidden', !mgr);
-  if (mgr) lock.innerHTML = 'كتب عبد الرحمن لنفسه في <b>' + talkCount() + '</b> من ' + upto + ' أسابيع. الحوار له وحده — لا يُعرض هنا.';
+  if (mgr) lock.innerHTML = 'كتب عبد الرحمن خلف <b>' + talkCount() + '</b> من ' + upto + ' صور. ما خلف الصور له وحده — لا يُعرض هنا.';
   if (!me) return;
   var html = '';
   for (var k = 1; k <= upto; k++) {
     var t = A.get('talk:' + k, '');
-    html += '<div class="tl"><span class="tl-w">WEEK ' + k + '</span><div class="bub me-now' + (t ? '' : ' empty') + '"><small>أنا · الأسبوع ' + k + '</small><p>' + (t ? A.esc(t) : 'لم يُكتب بعد') + '</p></div></div>';
+    html += '<div class="pr' + (flipped[k] ? ' flip' : '') + '" data-pr="' + k + '"><div class="pr-f"><span style="background-image:url(' + FR(k + 3) + ')"></span><small>الأسبوع ' + k + ' — اقلبها</small></div>' +
+      '<div class="pr-b"><span class="d">WEEK ' + k + ' · ' + A.fmtShort(A.weekStart(k)) + '</span><p' + (t ? '' : ' class="empty"') + '>' + (t ? A.esc(t) : 'لم يُكتب خلفها شيء بعد…') + '</p></div></div>';
   }
-  if (C.allDone || C.week > T.weeks) html += '<div class="tl"><div class="bub me-then"><small>أنا · ديسمبر</small><p>قرأتُ كل ما كتبتَه. الآن دوري في الردّ — في مهمة «الحوار الثاني».</p></div></div>';
   $('#tkList').innerHTML = html;
-  setText('tkLbl', 'سطران لعبد الرحمن في ديسمبر — الأسبوع ' + w);
+  setText('tkLbl', 'اكتب خلف إطار الأسبوع ' + w + ' — سطرين لعبد الرحمن في ديسمبر');
   var inp = $('#tkIn'); if (!tkDirty && document.activeElement !== inp) inp.value = A.get('talk:' + w, '');
 }
 
 /* ---------------- hooks ---------------- */
 T.hooks = {
-  init: function (api) { A = api; door(); geo(); rosetteInit(); plInit(); tkInit(); },
-  render: function (C) { paintRosette(C); paintTiles(C); paintArcade(C); paintPledge(C); paintTalk(C); },
+  init: function (api) { A = api; lightUp(); loupe(); plInit(); tkInit(); },
+  render: function (C) { paintCounter(C); paintStrips(C); paintRoll(C); paintPledge(C); paintTalk(C); },
   managerExtra: function (C, api) {
     var n = counts(C), w = curWeek(C), habits = T.checks.filter(function (c) { return api.get('c:' + w + ':' + c.id, false); }).length, pl = api.get('pledge', '');
     return '<div class="mgr-extra">' +
-      '<div class="mgr-box"><b>رواق الأسابيع</b>' + n.dev + ' مضاء · ' + n.burn + ' انطفأ · ' + n.left + ' باقٍ</div>' +
+      '<div class="mgr-box"><b>البكرة</b>' + n.dev + ' مُختار · ' + n.burn + ' مشطوب · ' + n.left + ' باقٍ</div>' +
       '<div class="mgr-box"><b>عهده</b>' + (pl ? api.esc(pl) : 'لم يُكتب بعد') + '</div>' +
-      '<div class="mgr-box"><b>حوار الأسابيع</b>' + talkCount() + ' رسالة (المحتوى خاص به)</div>' +
+      '<div class="mgr-box"><b>خلف الصور</b>' + talkCount() + ' رسالة (المحتوى خاص به)</div>' +
       '<div class="mgr-box"><b>عادات الأسبوع ' + w + '</b>' + habits + ' من ' + T.checks.length + '</div></div>';
   },
   celebration: function (ch) {
     return ({
-      C1: { ico: '🏮', h: 'اكتمل القوس الأول', p: 'اكتمل فصل «النيّة». صورتك الآن تعرف لماذا وُجدت — وهذا ما لا تعرفه أي آلة.' },
-      C2: { ico: '🤝', h: 'اكتمل القوس الثاني', p: 'اكتمل فصل «الكرامة والثقة». صوّرتَ الناس كما هم، لا كما تريدهم الكاميرا.' },
-      C3: { ico: '📐', h: 'اكتمل القوس الثالث', p: 'اكتمل فصل «الزاوية». صرتَ تختار زاويتك بنيّة، وتبني قصتك في المونتاج.' },
-      C4: { ico: '✦', h: 'اكتملت الدار', p: 'اكتمل المقال المصوّر والمسار كله. قناديلك تشهد على كل أسبوع وفيتَ فيه.' }
-    })[ch.id] || { ico: '✦', h: 'اكتمل القوس', p: '' };
+      C1: { ico: '🎞', h: 'اكتملت البكرة الأولى', p: 'اكتمل فصل «النيّة». صورتك الآن تعرف لماذا وُجدت — وهذا ما لا تعرفه أي آلة.' },
+      C2: { ico: '🤝', h: 'اكتملت البكرة الثانية', p: 'اكتمل فصل «الكرامة والثقة». صوّرتَ الناس كما هم، لا كما تريدهم الكاميرا.' },
+      C3: { ico: '📐', h: 'اكتملت البكرة الثالثة', p: 'اكتمل فصل «الزاوية». صرتَ تختار زاويتك بنيّة، وتبني قصتك في المونتاج.' },
+      C4: { ico: '⭕', h: 'المحرّر اختارك', p: 'اكتمل المقال المصوّر والمسار كله. دائرة حمراء على البكرة كلها — بقلمك أنت.' }
+    })[ch.id] || { ico: '🎞', h: 'اكتملت البكرة', p: '' };
   }
 };
 })();
