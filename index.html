@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0D0A0A">
+<title>أنا أحدّث أنا — عبد الرحمن · وحدة التصوير · المركز الإعلامي — ممكن</title>
+<meta name="description" content="أنا أحدّث أنا: مسار عبد الرحمن في التصوير الإنساني ولغة الزاوية والمقال المصوّر — وحدة التصوير، المركز الإعلامي في منظمة ممكن. من 8 نوفمبر إلى 31 ديسمبر 2026.">
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="base.css?v=1">
+<link rel="stylesheet" href="app.css?v=1">
+</head>
+<body>
+
+<!-- ============ who is in the darkroom ============ -->
+<div class="veil hidden" id="rolePicker">
+  <div class="veil-card">
+    <img class="veil-st" src="assets/sticker-sm.webp" alt="" width="130" height="130">
+    <h2>من في غرفة التحميض؟</h2>
+    <p>الإجابة تُحفَظ على هذا الجهاز فقط — ويمكن تغييرها في أي وقت.</p>
+    <div class="pick-row">
+      <button class="btn btn-main" data-role="me">أنا عبد الرحمن</button>
+      <button class="btn btn-ghost" data-role="manager">أنا المشرف</button>
+    </div>
+    <div class="pin-row hidden" id="pinRow">
+      <input id="pinInput" inputmode="numeric" maxlength="6" placeholder="رمز المشرف" dir="ltr" autocomplete="off">
+      <button class="btn btn-main btn-sm" id="pinGo">دخول</button>
+      <div class="pin-err hidden" id="pinErr">الرمز غير صحيح — حاول مجددًا.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ sync bar ============ -->
+<div class="syncbar">
+  <div class="syncbar-in">
+    <span class="dot" id="syncDot"></span>
+    <span class="sync-txt" id="syncTxt">حفظ محلي فقط</span>
+    <span class="grow"></span>
+    <span class="role-badge" id="roleBadge">—</span>
+    <button class="btn btn-ghost btn-xs" id="btnSwitchRole">تبديل</button>
+    <button class="btn btn-main btn-xs" id="btnSyncNow">مزامنة الآن</button>
+    <button class="btn btn-ghost btn-xs" id="btnSetup">إعدادات الحفظ</button>
+  </div>
+  <div class="setup hidden" id="setupPanel">
+    <div class="setup-in">
+      <div class="field"><label>GitHub Gist ID</label><input id="inGist" placeholder="a1b2c3d4…" autocomplete="off" spellcheck="false" dir="ltr"></div>
+      <div class="field"><label>GitHub Token · gist scope</label><input id="inToken" type="password" placeholder="ghp_…" autocomplete="off" dir="ltr"></div>
+      <div class="field narrow"><label>اسم الملف</label><input id="inFile" dir="ltr" spellcheck="false"></div>
+      <button class="btn btn-main btn-sm" id="btnSaveSetup">حفظ وربط</button>
+      <div class="setup-note">البيانات تُحفظ في ملف Gist خاص. التوكن يبقى على هذا الجهاز فقط.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ hero: the darkroom ============ -->
+<header class="hero" id="hero">
+  <div class="safelight" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="wrap hero-in">
+    <div class="hero-top">
+      <img class="logo" src="assets/logo-white.png" alt="ممكن — منظمة ممكن للتوعية والإعلام" width="132" height="44">
+      <div class="unit-tag en">Media Center · <b>Photography Unit</b></div>
+    </div>
+
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="kicker">غرفة التحميض · <span class="en">The Darkroom</span></div>
+        <h1 class="hero-title">أنا<br>أحدّث<br><span>أنا</span></h1>
+        <p class="hero-lead">هنا لا أحد يقارنك بأحد، ولا أحد يرسم لك خطواتك. المقارنة الوحيدة في هذه الغرفة: عبد الرحمن اليوم، مع عبد الرحمن قبل أسبوع. أنت تختار، وأنت تفي، والصورة تتحمّض.</p>
+        <div class="talk-hero" id="talkHero">
+          <div class="bub me-now"><small>أنا · نوفمبر</small><p id="tNow">ماذا ستقول لي في ديسمبر؟</p></div>
+          <div class="bub me-then"><small>أنا · ديسمبر</small><p id="tThen">اكتب لي سطرين كل أسبوع… وفي النهاية سأجيبك.</p></div>
+        </div>
+        <div class="hero-cta">
+          <a class="btn btn-main" href="#sheet">شريط الأسابيع</a>
+          <a class="btn btn-ghost" href="#week">مهام هذا الأسبوع</a>
+        </div>
+      </div>
+
+      <div class="tray-wrap">
+        <div class="tray" id="tray">
+          <div class="print" id="print">
+            <img src="assets/sticker.webp" alt="عبد الرحمن" width="300" height="300" id="printImg">
+            <div class="print-cap"><span class="en">MMC · 2026</span><span id="printLbl">الصورة تتحمّض</span></div>
+          </div>
+          <div class="liquid" aria-hidden="true"></div>
+        </div>
+        <div class="tray-read"><b class="en" id="trayPct">0%</b><span>من الصورة تحمّض</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ============ contact sheet ============ -->
+<section class="sec" id="sheet">
+  <div class="wrap">
+    <div class="sec-head rv"><div><div class="sec-k">Contact sheet</div><h2>شريط الأسابيع الثمانية</h2><p class="sec-sub">كل أسبوع إطار في الفيلم. تنهي مهامه في وقتها فيتحمّض. يمرّ الأسبوع ومهامه ناقصة؟ يحترق الإطار — ولا يعود. أسبوع الامتحانات يُحفظ إطاره إذا حقّقت ساعات الدراسة.</p></div></div>
+    <div class="film rv" id="film"></div>
+    <div class="sheet-stats rv" id="sheetStats"></div>
+    <div class="pledge rv" id="pledge"></div>
+  </div>
+</section>
+
+<!-- ============ this week ============ -->
+<section class="sec" id="week">
+  <div class="wrap">
+    <div class="sec-head rv"><div><div class="sec-k">This week</div><h2>إطار هذا الأسبوع</h2></div></div>
+    <div class="card rv" id="weekCard"></div>
+  </div>
+</section>
+
+<!-- ============ studies ============ -->
+<section class="sec" id="studiesSec">
+  <div class="wrap">
+    <div class="sec-head rv"><div><div class="sec-k">Studies first</div><h2>دراستي أولًا</h2><p class="sec-sub">«التركيز على الدراسة» هدف كتبتَه أنت. لذلك هي هنا في قلب المسار: ربع تقدّمك الكامل، وأسبوع الامتحان يُحفظ إطاره إذا حقّقت ساعاتك.</p></div></div>
+    <div id="studies" class="rv"></div>
+  </div>
+</section>
+
+<!-- ============ weekly habits ============ -->
+<section class="sec sec-tight">
+  <div class="wrap"><div id="checks" class="rv"></div></div>
+</section>
+
+<!-- ============ manager ============ -->
+<section class="sec hidden" id="mgrSec">
+  <div class="wrap"><div class="mgr" id="mgrPanel"></div></div>
+</section>
+
+<!-- ============ the rolls ============ -->
+<section class="sec" id="rolls">
+  <div class="wrap">
+    <div class="sec-head rv"><div><div class="sec-k">Four rolls of film</div><h2>الأفلام الأربعة</h2><p class="sec-sub">كل فيلم أسبوعان. تنهي المهمة فتصبح «قيد المراجعة» حتى يعتمدها المشرف. الترتيب داخل الأسبوع لك.</p></div></div>
+    <div id="chapters"></div>
+  </div>
+</section>
+
+<!-- ============ the dialogue ============ -->
+<section class="sec" id="talk">
+  <div class="wrap">
+    <div class="sec-head rv"><div><div class="sec-k">I talk to me</div><h2>حوار الأسابيع</h2><p class="sec-sub">سطران كل أسبوع لعبد الرحمن في ديسمبر: ماذا فعلت، ماذا خفت، ماذا تعلّمت. في النهاية تقرأ الحوار كاملًا — وتكتب الردّ.</p></div></div>
+    <div class="talk card rv" id="talkCard"></div>
+  </div>
+</section>
+
+<!-- ============ AI ============ -->
+<section class="sec" id="ai">
+  <div class="wrap">
+    <div class="sec-head rv"><div><div class="sec-k">The machine and the shutter</div><h2>الآلة لا تعرف لماذا ضغطتَ الزر</h2><p class="sec-sub">الذكاء الاصطناعي يصنع صورًا جميلة بلا ذاكرة وبلا شاهد. قيمتك أنك كنتَ هناك، وأنك صادق فيما تنقله. هذه قواعدنا في المركز الإعلامي.</p></div></div>
+    <div class="ai-grid">
+      <ol class="ai-rules rv">
+        <li><span><b>لا تُضِف ولا تحذف</b> شيئًا من صورة وثائقية. ما حدث أمام الكاميرا هو ما يُنشر.</span></li>
+        <li><span>تنظيف التشويش والأقنعة الذكية <b>مسموح</b> ما دام لا يغيّر المعلومة.</span></li>
+        <li><span><b>لا تكبير بالذكاء الاصطناعي</b> (AI upscaling) لصورة وثائقية أو صورة مسابقة.</span></li>
+        <li><span><b>لا تولّد بشرًا أو أحداثًا</b> واقعية المظهر ثم تقدّمها كأنها حقيقية.</span></li>
+        <li><span>أي صورة مولَّدة يُكتب عليها بوضوح: <b>«مولَّدة بالذكاء الاصطناعي»</b>.</span></li>
+        <li><span>ما يكتبه الذكاء الاصطناعي <b>مسوّدة غير مُتحقَّق منها</b> — أنت تراجع كل معلومة واسم ورقم.</span></li>
+        <li><span>التعليق دقيق، وأي مشهد <b>مُعاد تمثيله</b> يُذكر ذلك صراحة.</span></li>
+        <li><span><b>لا استنساخ لصوت أحد</b> بلا موافقة مكتوبة، وأي صوت مولَّد يُعلَن.</span></li>
+        <li><span>الذكاء الاصطناعي <b>لا يحلّ محلّ إنسان حقيقي</b>، ولا محلّ موافقته على التصوير.</span></li>
+        <li><span>أرفق <b>Content Credentials</b> (سجلّ التعديل) بصورك من Lightroom أو Photoshop.</span></li>
+      </ol>
+      <div class="ai-yes rv">
+        <h4>أين يساعدك فعلًا؟</h4>
+        <ul>
+          <li>الفرز الأولي لمئات الصور — ثم تختار أنت بعينك.</li>
+          <li>تنظيف التشويش في صور الإضاءة المنخفضة.</li>
+          <li>مسوّدة إنجليزية لتعليقاتك — ثم تراجعها كلمة كلمة (وهذا تمرين إنجليزية أيضًا).</li>
+          <li>أفكار لنبذتك وصفحة أعمالك — ثم تكتبها بصوتك أنت.</li>
+          <li>تفريغ المقابلات نصيًّا — تأكّد أن الأداة تدعم العربية وراجع النص.</li>
+        </ul>
+        <p class="ai-src">المصادر: قواعد World Press Photo، ودليل Associated Press، ومبادرة Content Credentials.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ resources ============ -->
+<section class="sec" id="library">
+  <div class="wrap">
+    <div class="sec-head rv"><div><div class="sec-k">The shelf</div><h2>رفّ الغرفة</h2><p class="sec-sub">مصادر إضافية بعد المسار — اختر منها ما يشدّك.</p></div></div>
+    <div id="resources" class="rv"></div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <img src="assets/logo-white.png" alt="ممكن" width="102" height="34">
+    <span>وحدة التصوير · المركز الإعلامي — منظمة ممكن للتوعية والإعلام · 2026</span>
+  </div>
+</footer>
+
+<div id="toasts" aria-live="polite"></div>
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<script src="content.js?v=1"></script>
+<script src="theme.js?v=1"></script>
+<script src="engine.js?v=1"></script>
+</body>
+</html>
