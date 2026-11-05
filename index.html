@@ -18,7 +18,7 @@
 <!-- ============ who is in the darkroom ============ -->
 <div class="veil hidden" id="rolePicker">
   <div class="veil-card">
-    <img class="veil-st" src="assets/lt/f5.webp" alt="" width="130" height="130">
+    <img class="veil-st" src="assets/portrait-sm.webp" alt="" width="130" height="130">
     <h2>من على طاولة المحرّر؟</h2>
     <p>الإجابة تُحفَظ على هذا الجهاز فقط — ويمكن تغييرها في أي وقت.</p>
     <div class="pick-row">
@@ -69,75 +69,36 @@
       <p class="hero-lead">قبل نحو ألف عام، كتب العالِم المسلم <b>الحسن بن الهيثم</b> في «كتاب المناظر» أن الضوء إذا دخل من ثقبٍ صغير إلى بيتٍ مظلم، رسم على الجدار المقابل صورةً مقلوبة لما في الخارج. على هذا المبدأ تقوم كل كاميرا حتى اليوم — ومنها كاميرتك.</p>
       <p class="hero-lead">أنت تكمل طريقًا بدأه عالِمٌ من أمّتك: أن ترى بصدق، وأن تنقل ما رأيت كما هو. لا أحد هنا يقارنك بأحد، ولا أحد يرسم لك خطواتك.</p>
       <div class="hero-cta">
-        <a class="btn btn-main" href="#desk">طاولة المحرّر</a>
-        <a class="btn btn-ghost" href="#roll">بكرة الأسابيع</a>
+        <a class="btn btn-main" href="#roll">بكرة الأسابيع</a>
+        <a class="btn btn-ghost" href="#shots">أهدافي الثمانية</a>
       </div>
     </div>
 
-    <figure class="obscura" id="obscura">
-      <svg viewBox="0 0 800 470" id="obsSvg" role="img" aria-label="رسم البيت المظلم: صورة عبد الرحمن تمرّ عبر ثقب وترتسم مقلوبة على الجدار">
-        <defs>
-          <clipPath id="roomClip"><rect x="446" y="40" width="324" height="390"/></clipPath>
-          <linearGradient id="roomG" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1c140d"/><stop offset="1" stop-color="#0d0906"/></linearGradient>
-          <radialGradient id="holeG"><stop offset="0" stop-color="#fff3c4"/><stop offset="1" stop-color="#fff3c4" stop-opacity="0"/></radialGradient>
-          <filter id="ink"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.6"/></filter>
-        </defs>
-        <rect x="6" y="6" width="788" height="458" fill="none" stroke="#7a5a2c" stroke-width="1.5"/>
-        <rect x="14" y="14" width="772" height="442" fill="none" stroke="#7a5a2c" stroke-width=".8"/>
-        <rect x="440" y="40" width="330" height="390" fill="url(#roomG)"/>
-        <polygon id="beam" fill="#f5d27a" opacity=".16"/>
-        <g id="outside"><rect id="subFrame" fill="#fff" stroke="#2b2118" stroke-width="1.5"/><image id="subImg" href="assets/lt/f1.webp" preserveAspectRatio="xMidYMid slice"/></g>
-        <g id="inside" clip-path="url(#roomClip)"><image id="projImg" href="assets/lt/f1.webp" preserveAspectRatio="xMidYMid slice"/><rect id="projGlow" fill="#f2b75a" opacity=".22"/></g>
-        <path d="M440 40 V218 M440 242 V430" stroke="#2b2118" stroke-width="12"/>
-        <circle cx="440" cy="230" r="22" fill="url(#holeG)" class="hole"/>
-        <g id="rays" fill="none" stroke="#B8892E" stroke-width="1.6" filter="url(#ink)"></g>
-        <g id="dots" fill="#fff3c4"></g>
-        <g class="abjad" font-family="Amiri, serif" font-size="26" fill="#9b2c22" font-weight="700">
-          <text id="lA">ا</text><text id="lB">ب</text><text x="452" y="222">ج</text><text id="lD">د</text><text id="lH">هـ</text>
+    <figure class="hero-portrait" id="heroPortrait">
+      <svg class="optics" viewBox="0 0 600 640" aria-hidden="true">
+        <defs><radialGradient id="pinG"><stop offset="0" stop-color="#fff3c4"/><stop offset=".4" stop-color="#f5d27a" stop-opacity=".7"/><stop offset="1" stop-color="#f5d27a" stop-opacity="0"/></radialGradient></defs>
+        <g class="rings" fill="none" stroke="#B8892E" stroke-opacity=".35">
+          <circle cx="96" cy="300" r="70"/><circle cx="96" cy="300" r="140" stroke-dasharray="3 7"/><circle cx="96" cy="300" r="230"/><circle cx="96" cy="300" r="330" stroke-dasharray="2 9"/>
         </g>
-        <text x="600" y="462" font-family="Amiri, serif" font-size="15" fill="#7a5a2c" text-anchor="middle">البيت المظلم</text>
-        <text x="140" y="462" font-family="Amiri, serif" font-size="15" fill="#7a5a2c" text-anchor="middle">ما في الخارج</text>
+        <g id="optRays" fill="none" stroke="#B8892E" stroke-width="1.4"></g>
+        <g id="optDots" fill="#fff3c4"></g>
+        <circle cx="96" cy="300" r="34" fill="url(#pinG)" class="hole"/>
+        <g class="abjad" font-family="Amiri, serif" font-size="28" fill="#9b2c22" font-weight="700">
+          <text x="570" y="70">ا</text><text x="570" y="590">ب</text><text x="104" y="282">ج</text><text x="14" y="560">د</text><text x="14" y="96">هـ</text>
+        </g>
       </svg>
-      <figcaption>شكلٌ على طريقة «كتاب المناظر»: ما في الخارج <b>ا ب</b> يمرّ ضوؤه من الثقب <b>ج</b>، فيرتسم مقلوبًا <b>د هـ</b> على جدار البيت المظلم. <span class="hint">حرّك الفأرة فوق الشكل: تتحرك الصورة في الخارج، وتتحرك صورتها في الداخل عكسها — هكذا تعمل كل عدسة.</span></figcaption>
+      <img class="portrait" src="assets/portrait.webp" alt="عبد الرحمن — مصوّر وحدة التصوير" width="710" height="720">
+      <figcaption>الضوء يدخل من الثقب <b>ج</b> فترتسم الصورة مقلوبة — مبدأ «البيت المظلم» الذي وصفه ابن الهيثم، وتعمل به الكاميرا في يدك.</figcaption>
     </figure>
   </div>
   <div class="blink" id="blink" aria-hidden="true"></div>
 </header>
 
 <main>
-<!-- ============ the editor's desk: his real contact sheet ============ -->
-<section class="sec sec-desk" id="desk">
-  <div class="wrap">
-    <div class="desk-grid">
-      <div>
-        <div class="sec-head rv"><div><div class="sec-k">The editor's desk · طاولة المحرّر</div><h2>المصوّر يختار — ولا أحد يختار عنه</h2><p class="sec-sub">على طاولة المحرّر تُفرَش الصور، ويُختار منها ما يستحق أن يُرى. هذه لقطاتك الحقيقية — والدائرة الحمراء اختيار المحرّر. كل أسبوع في مسارك إطار: أنت من يقرّر هل يُختار أم يُشطب.</p></div></div>
-        <figure class="note rv">
-          <blockquote>أيّهذا الشاكي وما بكَ داءٌ … كُن جميلًا ترَ الوجودَ جميلا</blockquote>
-          <figcaption>— إيليا أبو ماضي</figcaption>
-          <p class="why"><b>لماذا هنا؟</b> لأن الصورة تبدأ من عين صاحبها. مصوّران أمام المشهد نفسه: أحدهما يرى فوضى، والآخر يرى قصة. الفرق في الذي ينظر، لا في الكاميرا.</p>
-        </figure>
-      </div>
-      <div class="sheet-col">
-      <div class="sheet" id="sheet">
-        <i class="tp tp1"></i><i class="tp tp2"></i>
-        <img src="assets/lt/sheet.webp" alt="ورقة تلامس: لقطات عبد الرحمن الحقيقية بالأبيض والأسود" width="1810" height="1696" id="sheetImg">
-        <svg class="grease" viewBox="0 0 1810 1696" aria-hidden="true">
-          <path class="circle" d="M236.0 601.0 L269.5 597.0 L303.8 604.7 L336.0 601.3 L368.9 618.2 L403.9 629.8 L431.9 647.9 L456.3 672.3 L478.6 691.5 L495.9 720.2 L511.7 752.8 L522.5 781.8 L522.0 814.3 L529.0 846.1 L522.5 878.9 L513.0 910.5 L495.6 939.8 L478.0 968.4 L459.7 986.5 L428.1 1008.6 L405.0 1028.4 L371.7 1040.8 L338.2 1051.5 L303.8 1059.3 L269.3 1064.2 L234.3 1061.0 L199.6 1053.6 L167.7 1032.3 L135.9 1024.5 L107.5 1000.8 L84.5 974.9 L62.4 951.7 L51.6 920.9 L33.1 894.6 L34.6 862.3 L28.2 830.0 L31.8 797.8 L32.2 768.6 L47.1 739.5 L62.4 710.3 L81.7 679.9 L109.4 656.4 L138.3 645.5 L166.9 630.6 L201.1 614.8 L233.9 610.3 L269.4 598.6 L304.2 598.7 L340.4 611.2 L372.7 619.5 L405.6 632.6 L434.6 650.3 L464.3 672.6 L482.8 695.4 L499.6 724.9 L522.3 752.5 L527.4 784.2 L531.0 814.2 L526.4 845.9 L528.9 875.8 L519.2 907.1 L505.3 935.1 L486.7 964.2 L457.7 982.9 L436.8 1011.9 L404.5 1024.5 L374.4 1036.7 L339.6 1046.1 L304.6 1054.8 L269.1 1053.1 L232.8 1045.6 L198.3 1046.2 L166.3 1028.7 L132.1 1013.4 L108.2 996.0 L78.8 971.0 L61.2 947.6 L38.7 920.8 L25.8 890.6 L24.1 861.4 L14.9 830.0 L25.1 799.5 L28.9 769.5 L38.0 737.5 L61.5 713.2 L76.5 685.5 L101.9 665.7 L135.3 647.3 L162.6 632.3 L198.2 619.2 L233.0 611.9 L268.7 611.8 L304.6 603.6 L342.2 608.7 L375.4 619.1"/>
-          <path class="arrow" d="M640 760 C 600 720, 560 700, 520 720 M520 720 l30 -14 M520 720 l18 26"/>
-          <text class="pick" x="660" y="800" direction="ltr" text-anchor="start">هذه.</text>
-        </svg>
-        <div class="loupe" id="loupe" aria-hidden="true"><i></i></div>
-      </div>
-      <div class="sheet-hint">حرّك العدسة المكبّرة فوق اللقطات — هكذا يختار المحرّرون</div>
-      <div class="counter" id="counter"><span class="c-win en" id="cWin">00</span><span class="c-l">لقطة من 36 — تقدّمك في البكرة</span><div class="c-bar"><i id="cBar"></i></div></div>
-    </div>
-    </div>
-  </div>
-</section>
 <!-- ============ his 8 goals: darkroom test strips ============ -->
 <section class="sec" id="shots">
   <div class="wrap">
-    <div class="sec-head rv"><div><div class="sec-k">Test strips · شرائط الاختبار</div><h2>أهدافي الثمانية</h2><p class="sec-sub">في الغرفة المظلمة، قبل الطبعة النهائية، يطبع المصوّر «شريط اختبار» بأزمنة تعريض مختلفة: 2 ثانية، 4، 8… حتى تظهر الصورة كما يجب. أهدافك الثمانية — التي كتبتَها بنفسك — شرائط اختبار، تظهر صورتك فيها شريحةً بعد شريحة كلما اقتربت.</p></div></div>
+    <div class="sec-head rv"><div><div class="sec-k">Test strips · شرائط الاختبار</div><h2>أهدافي الثمانية</h2><p class="sec-sub">في الغرفة المظلمة، قبل الطبعة النهائية، يطبع المصوّر «شريط اختبار» بأزمنة تعريض مختلفة: 2 ثانية، 4، 8… حتى يصل إلى التعريض الصحيح. أهدافك الثمانية — التي كتبتَها بنفسك — شرائط اختبار، تُعرَّض درجةً بعد درجة كلما اقتربت.</p></div></div>
     <div class="strips" id="strips"></div>
   </div>
 </section>
@@ -194,7 +155,7 @@
 <!-- ============ the backs of the prints ============ -->
 <section class="sec" id="talk">
   <div class="wrap">
-    <div class="sec-head rv"><div><div class="sec-k">On the back of the print</div><h2>أنا أحدّثُ أنا</h2><p class="sec-sub">هذا عنوانٌ اخترتَه أنت. الناس يكتبون خلف صورهم ما لا تقوله الصورة — اكتب كل أسبوع سطرين خلف إطاره لعبد الرحمن في ديسمبر. اضغط على الصورة لتقلبها. لا يقرأ هذه الرسائل غيرك.</p></div></div>
+    <div class="sec-head rv"><div><div class="sec-k">On the back of the print</div><h2>أنا أحدّثُ أنا</h2><p class="sec-sub">هذا عنوانٌ اخترتَه أنت. الناس يكتبون خلف صورهم ما لا تقوله الصورة — اكتب كل أسبوع سطرين خلف طبعته لعبد الرحمن في ديسمبر. اضغط على الطبعة لتقلبها. لا يقرأ هذه الرسائل غيرك.</p></div></div>
     <figure class="note note-wide rv">
       <blockquote>… ويتّهم أيضًا نفسه عند خصامه، فلا يتحامل عليه ولا يتسامح فيه</blockquote>
       <figcaption>— الحسن بن الهيثم، من تتمّة النصّ نفسه</figcaption>

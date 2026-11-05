@@ -10,7 +10,6 @@ var A = null;
 var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 var $ = function (s) { return document.querySelector(s); };
 var plDirty = false, tkDirty = false, flipped = {};
-var FR = function (k) { return 'assets/lt/f' + (((k - 1) % 12) + 1) + '.webp'; };
 function curWeek(C) { return Math.min(Math.max(C.week, 1), T.weeks); }
 function setText(id, v) { var n = document.getElementById(id); if (n) n.textContent = v; }
 
@@ -24,46 +23,29 @@ function lightUp() {
   document.addEventListener('click', function (e) { var b = e.target.closest('[data-task][data-to="pending"]'); if (b && A.isMe()) { var k = $('#blink'); k.classList.remove('go'); void k.offsetWidth; k.classList.add('go'); } });
 }
 
-/* ---------------- Ibn al-Haytham's dark house: light through a pinhole ---------------- */
-function obscura() {
-  var svg = $('#obsSvg'); if (!svg) return;
-  var NS = 'http://www.w3.org/2000/svg', P = { x: 440, y: 230 }, X1 = 210, S = 165, WALL = 765, m = (WALL - P.x) / (P.x - X1);
-  var rays = $('#rays'), dots = $('#dots'), off = 0, tgt = 0, hand = false, rp = [], dp = [];
-  for (var i = 0; i < 5; i++) { var pa = document.createElementNS(NS, 'path'); rays.appendChild(pa); rp.push(pa); }
-  for (var k = 0; k < 14; k++) { var c = document.createElementNS(NS, 'circle'); c.setAttribute('r', '2.2'); dots.appendChild(c); dp.push({ el: c, ray: k % 5, t: Math.random() }); }
-  function at(el, a) { for (var n in a) el.setAttribute(n, a[n]); }
-  function proj(y) { return P.y - (y - P.y) * m; }
-  function layout() {
-    var top = P.y - S / 2 + off, bot = top + S, pt = proj(bot), pb = proj(top), h = pb - pt;
-    at($('#subFrame'), { x: X1 - S - 6, y: top - 6, width: S + 12, height: S + 12 });
-    at($('#subImg'), { x: X1 - S, y: top, width: S, height: S });
-    at($('#projImg'), { x: WALL - h, y: pt, width: h, height: h, transform: 'matrix(-1 0 0 -1 ' + (2 * WALL - h) + ' ' + (pt + pb) + ')' });
-    at($('#projGlow'), { x: WALL - h, y: pt, width: h, height: h });
-    $('#beam').setAttribute('points', [X1, top, P.x, P.y, X1, bot].join(' ') + ' ' + [P.x, P.y, WALL, pt, WALL, pb, P.x, P.y].join(' '));
-    for (var i = 0; i < 5; i++) { var y = top + S * i / 4; rp[i].setAttribute('d', 'M' + X1 + ' ' + y.toFixed(1) + ' L' + P.x + ' ' + P.y + ' L' + WALL + ' ' + proj(y).toFixed(1)); rp[i]._y = y; }
-    at($('#lA'), { x: X1 - S - 30, y: top + 22 }); at($('#lB'), { x: X1 - S - 30, y: bot });
-    at($('#lD'), { x: WALL - h - 26, y: pb }); at($('#lH'), { x: WALL - h - 34, y: pt + 22 });
+/* ---------------- Ibn al-Haytham's rays behind the portrait ---------------- */
+function optics() {
+  var g = $('#optRays'), dg = $('#optDots'); if (!g) return;
+  var NS = 'http://www.w3.org/2000/svg', P = { x: 96, y: 300 }, rays = [], dots = [];
+  for (var i = 0; i < 9; i++) {
+    var y = 60 + i * 65, ex = 0, ey = P.y - (y - P.y) * (P.x - ex) / (600 - P.x);
+    var pa = document.createElementNS(NS, 'path');
+    pa.setAttribute('d', 'M600 ' + y + ' L' + P.x + ' ' + P.y + ' L' + ex + ' ' + ey.toFixed(1));
+    pa.style.transitionDelay = (i * .08) + 's';
+    g.appendChild(pa); rays.push({ y: y, ey: ey });
   }
-  function frame(t) {
-    if (!hand) tgt = Math.sin(t * .0006) * 38;
-    off += (tgt - off) * .08; layout();
-    dp.forEach(function (d) {
-      d.t += .006; if (d.t > 1) d.t = 0;
-      var y = rp[d.ray]._y, x, yy;
-      if (d.t < .42) { var u = d.t / .42; x = X1 + (P.x - X1) * u; yy = y + (P.y - y) * u; }
-      else { var v = (d.t - .42) / .58; x = P.x + (WALL - P.x) * v; yy = P.y + (proj(y) - P.y) * v; }
-      d.el.setAttribute('cx', x.toFixed(1)); d.el.setAttribute('cy', yy.toFixed(1)); d.el.setAttribute('opacity', (Math.sin(d.t * Math.PI) * .9).toFixed(2));
+  for (var k = 0; k < 18; k++) { var c = document.createElementNS(NS, 'circle'); c.setAttribute('r', '2.4'); dg.appendChild(c); dots.push({ el: c, r: k % 9, t: Math.random() }); }
+  if (reduce) return;
+  (function step() {
+    dots.forEach(function (d) {
+      d.t += .004; if (d.t > 1) d.t = 0;
+      var R = rays[d.r], x, y, u;
+      if (d.t < .8) { u = d.t / .8; x = 600 + (P.x - 600) * u; y = R.y + (P.y - R.y) * u; }
+      else { u = (d.t - .8) / .2; x = P.x - P.x * u; y = P.y + (R.ey - P.y) * u; }
+      d.el.setAttribute('cx', x.toFixed(1)); d.el.setAttribute('cy', y.toFixed(1)); d.el.setAttribute('opacity', (Math.sin(d.t * Math.PI) * .85).toFixed(2));
     });
-    requestAnimationFrame(frame);
-  }
-  svg.addEventListener('pointermove', function (e) { var r = svg.getBoundingClientRect(); hand = true; tgt = Math.max(-60, Math.min(60, ((e.clientY - r.top) / r.height - .5) * 200)); });
-  svg.addEventListener('pointerleave', function () { hand = false; });
-  layout();
-  if (!reduce) requestAnimationFrame(frame);
-  /* the editor draws his circle when the desk comes into view */
-  var desk = $('#desk');
-  if (desk && 'IntersectionObserver' in window) new IntersectionObserver(function (en, o) { if (en[0].isIntersecting) { desk.classList.add('drawn'); o.disconnect(); } }, { threshold: .35 }).observe(desk);
-  else if (desk) desk.classList.add('drawn');
+    requestAnimationFrame(step);
+  })();
 }
 
 /* ---------------- the loupe ---------------- */
@@ -128,7 +110,7 @@ function mark(state) {
 function paintRoll(C) {
   var el = $('#rollStrip'); if (!el) return;
   el.innerHTML = C.weeksInfo.map(function (w) {
-    return '<div class="wf ' + w.state + '" title="الأسبوع ' + w.w + '"><i class="wf-img" style="background-image:url(' + FR(w.w) + ')"></i>' + mark(w.state) +
+    return '<div class="wf ' + w.state + '" title="الأسبوع ' + w.w + '"><span class="wf-big">' + w.w + '</span>' + mark(w.state) +
       '<span class="wf-l">' + (LBL[w.state] || '') + '</span><span class="wf-n">' + w.w + ' · ' + A.fmtShort(A.weekStart(w.w)) + '</span></div>';
   }).join('');
   var n = counts(C);
@@ -157,10 +139,11 @@ function paintStrips(C) {
   var el = $('#strips'); if (!el) return;
   var imgs = [1, 6, 8, 10, 12, 5, 2, 7];
   el.innerHTML = goals(C).map(function (g, i) {
-    var p = Math.max(0, Math.min(1, g.p)), on = Math.round(p * 8), url = 'assets/lt/s' + imgs[i] + '.webp', bands = '';
+    var p = Math.max(0, Math.min(1, g.p)), on = Math.round(p * 8), bands = '';
     for (var b = 0; b < 8; b++) {
-      var lit = [3, 4, 2, 5, 1, 6, 0, 7].indexOf(b) < on; /* the face (centre) appears first */
-      bands += '<span class="band ' + (lit ? 'on' : 'off') + '" style="background-image:url(' + url + ');background-size:800% 100%;background-position:' + (b / 7 * 100) + '% 50%' + (lit ? ';filter:grayscale(1) contrast(1.1) brightness(' + (1.32 - b * .055).toFixed(2) + ')' : '') + '"><b>' + STEPS[b] + '</b></span>';
+      var lit = b < on; /* exposure builds step by step: 2s, 4s, 8s… */
+      var tone = Math.round(232 - b * 27);
+      bands += '<span class="band step ' + (lit ? 'on' : 'off') + '"' + (lit ? ' style="background:rgb(' + tone + ',' + (tone - 6) + ',' + (tone - 16) + ')"' : '') + '><b' + (lit && b < 3 ? ' style="color:#5b4a33;text-shadow:none"' : '') + '>' + STEPS[b] + '</b></span>';
     }
     return '<a class="strip-card" href="' + (g.go.charAt(0) === '#' ? g.go : '#ch-' + g.go) + '" data-go="' + g.go + '"><i class="tp"></i><div class="strip">' + bands + '</div>' +
       '<div class="strip-meta"><span class="strip-ico">' + g.ico + '</span><div><h4>' + A.esc(g.t) + '</h4><p>' + A.esc(g.d) + '</p></div></div>' +
@@ -232,7 +215,7 @@ function paintTalk(C) {
   var html = '';
   for (var k = 1; k <= upto; k++) {
     var t = A.get('talk:' + k, '');
-    html += '<div class="pr' + (flipped[k] ? ' flip' : '') + '" data-pr="' + k + '"><div class="pr-f"><span style="background-image:url(' + FR(k + 3) + ')"></span><small>الأسبوع ' + k + ' — اقلبها</small></div>' +
+    html += '<div class="pr' + (flipped[k] ? ' flip' : '') + '" data-pr="' + k + '"><div class="pr-f"><span>الأسبوع ' + k + '</span><small>اضغط لتقلبها</small></div>' +
       '<div class="pr-b"><span class="d">WEEK ' + k + ' · ' + A.fmtShort(A.weekStart(k)) + '</span><p' + (t ? '' : ' class="empty"') + '>' + (t ? A.esc(t) : 'لم يُكتب خلفها شيء بعد…') + '</p></div></div>';
   }
   $('#tkList').innerHTML = html;
@@ -242,8 +225,8 @@ function paintTalk(C) {
 
 /* ---------------- hooks ---------------- */
 T.hooks = {
-  init: function (api) { A = api; lightUp(); obscura(); loupe(); plInit(); tkInit(); },
-  render: function (C) { paintCounter(C); paintStrips(C); paintRoll(C); paintPledge(C); paintTalk(C); },
+  init: function (api) { A = api; lightUp(); optics(); plInit(); tkInit(); },
+  render: function (C) { paintStrips(C); paintRoll(C); paintPledge(C); paintTalk(C); },
   managerExtra: function (C, api) {
     var n = counts(C), w = curWeek(C), habits = T.checks.filter(function (c) { return api.get('c:' + w + ':' + c.id, false); }).length, pl = api.get('pledge', '');
     return '<div class="mgr-extra">' +
