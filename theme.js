@@ -24,12 +24,25 @@ function openBook() {
   var fonts = document.fonts && document.fonts.load ? Promise.all([document.fonts.load('700 80px "Aref Ruqaa"'), document.fonts.load('400 20px "Amiri"')]) : Promise.resolve();
   var started = false, start = function () { if (started) return; started = true; setTimeout(go, reduce ? 0 : 450); };
   fonts.then(start, start); setTimeout(start, 2500);
-  /* measure the name so the pen stroke is exactly as long as the letters */
-  fonts.then(function () {
-    var t = $('#nmText'); if (!t || !t.getComputedTextLength) return;
-    var L = Math.round(t.getComputedTextLength() * 9);
-    t.style.strokeDasharray = L; t.style.strokeDashoffset = L; t.style.setProperty('--L', L);
-  }, function () {});
+  /* write the name with a pen: each stroke follows the letter, right to left, at an even hand speed */
+  var svg = $('#nameInk'), strokes = svg ? svg.querySelectorAll('#penStrokes path') : [];
+  var write = function () {
+    if (!strokes.length) return;
+    if (reduce) { svg.classList.add('done'); return; }
+    var t = 0, SPEED = 300; /* viewBox units per second */
+    Array.prototype.forEach.call(strokes, function (p, i) {
+      var L = p.getTotalLength(), d = Math.max(.18, L / SPEED);
+      p.style.strokeDasharray = L + ' ' + (L + 20); p.style.strokeDashoffset = L;
+      p.getBoundingClientRect();
+      p.style.transition = 'stroke-dashoffset ' + d.toFixed(2) + 's cubic-bezier(.42,0,.58,1) ' + t.toFixed(2) + 's';
+      p.style.strokeDashoffset = 0;
+      t += d * .82 + (i < strokes.length - 1 && strokes[i + 1].dataset.lift ? .1 : 0);
+    });
+    setTimeout(function () { svg.classList.add('done'); }, (t + .6) * 1000);
+  };
+  var started2 = false;
+  var go2 = function () { if (started2) return; started2 = true; setTimeout(write, reduce ? 0 : 650); };
+  fonts.then(go2, go2); setTimeout(go2, 2600);
 }
 
 /* write verses with ink as they scroll into view */

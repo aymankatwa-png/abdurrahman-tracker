@@ -261,15 +261,10 @@ body{background:var(--bg) var(--grain)}
 @media (max-width:640px){ .shelf-row{justify-content:flex-start;min-height:250px} .peek-card{grid-template-columns:1fr} .peek-cover{display:none} }
 @media (max-width:640px){ .bk{width:calc(var(--w,48px)*.95);height:calc(var(--h,210px)*.9)} .bk .sp-t{max-height:calc(var(--h,210px)*.9 - 70px);font-size:13px} }
 
-/* ---------- the name, painted in with strips of ink ---------- */
+/* ---------- the name, written with a pen, stroke by stroke ---------- */
 .name-ink .nm{font-family:'Aref Ruqaa','Dahab',serif;font-weight:700;font-size:128px;fill:#16110D}
-.name-ink .st{stroke-dasharray:100;stroke-dashoffset:100}
-.diwan.ink .name-ink .st{transition:stroke-dashoffset .75s cubic-bezier(.55,.1,.35,1)}
-.diwan.ink .name-ink .st1{transition-delay:0s}.diwan.ink .name-ink .st2{transition-delay:.6s}.diwan.ink .name-ink .st3{transition-delay:1.2s}
-.diwan.ink .name-ink .st{stroke-dashoffset:0}
-.name-ink .drop{fill:#16110D;opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(0)}
-.diwan.ink .name-ink .drop{transition:transform .3s 1.9s cubic-bezier(.3,1.6,.5,1),opacity .2s 1.9s;opacity:.85;transform:scale(1)}
-.diwan.ink .name-ink .d2{transition-delay:2s}.diwan.ink .name-ink .d3{transition-delay:.35s}
+.name-ink #penStrokes path{stroke-dasharray:2000;stroke-dashoffset:2000}
+.name-ink.done .nm{mask:none}
 /* softer entrance (no cover) */
 .page{opacity:0;transform:translateY(16px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
 .diwan.open .page{opacity:1;transform:none}
